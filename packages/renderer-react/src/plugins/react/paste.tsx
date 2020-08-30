@@ -1,5 +1,5 @@
-import { isAllSibiling, SheetModel } from '@blink-mind/core';
-import { createKey, Topic, OpType } from '@blink-mind/core';
+import { isAllSibiling, SheetModel } from '@stayfocus/core';
+import { createKey, Topic, OpType } from '@stayfocus/core';
 import { MenuItem } from '@blueprintjs/core';
 import * as React from 'react';
 import { KeyboardHotKeyWidget } from '../../components';

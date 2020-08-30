@@ -1,5 +1,5 @@
-import { JsonSerializerPlugin } from '@blink-mind/plugin-json-serializer';
-import TopologyDiagramPlugin from '@blink-mind/plugin-topology-diagram';
+import { JsonSerializerPlugin } from '@stayfocus/plugin-json-serializer';
+import TopologyDiagramPlugin from '@stayfocus/plugin-topology-diagram';
 import {
   ExportFilePlugin,
   ExportTopicPlugin,

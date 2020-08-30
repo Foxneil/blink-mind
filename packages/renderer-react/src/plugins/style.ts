@@ -4,7 +4,7 @@ import {
   ThemeType,
   TopicStyle,
   TopicVisualLevel
-} from '@blink-mind/core';
+} from '@stayfocus/core';
 import debug from 'debug';
 import { isEqual } from 'lodash';
 

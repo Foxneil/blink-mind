@@ -1,4 +1,4 @@
-import { DocModel } from '@blink-mind/core';
+import { DocModel } from '@stayfocus/core';
 import debug from 'debug';
 import * as React from 'react';
 import { generateSimpleModel } from '../utils';

@@ -1,4 +1,4 @@
-import { BlockType, ViewModeMindMap } from '@blink-mind/core';
+import { BlockType, ViewModeMindMap } from '@stayfocus/core';
 import debug from 'debug';
 import React from 'react';
 import { SaveRef } from '../../components/common';

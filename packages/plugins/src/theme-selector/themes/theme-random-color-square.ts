@@ -1,4 +1,4 @@
-import { ThemeType } from '@blink-mind/core';
+import { ThemeType } from '@stayfocus/core';
 
 export const themeRandomColorSquare: ThemeType = {
   name: 'random-color-square',

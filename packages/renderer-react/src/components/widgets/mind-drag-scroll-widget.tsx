@@ -1,4 +1,4 @@
-import { Controller, DocModel, SheetModel } from '@blink-mind/core';
+import { Controller, DocModel, SheetModel } from '@stayfocus/core';
 import * as React from 'react';
 import styled from 'styled-components';
 import { EventKey, RefKey, topicNodeRefKey } from '../../utils';

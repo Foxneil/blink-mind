@@ -1,4 +1,4 @@
-import { KeyType } from '@blink-mind/core';
+import { KeyType } from '@stayfocus/core';
 import { List, Map, Record } from 'immutable';
 
 type ReferenceRecordType = {

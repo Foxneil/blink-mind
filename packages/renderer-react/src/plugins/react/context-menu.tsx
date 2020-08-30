@@ -1,4 +1,4 @@
-import { BlockType, OpType, ViewModeMindMap } from '@blink-mind/core';
+import { BlockType, OpType, ViewModeMindMap } from '@stayfocus/core';
 import { MenuItem } from '@blueprintjs/core';
 import * as React from 'react';
 import {

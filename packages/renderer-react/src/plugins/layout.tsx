@@ -8,7 +8,7 @@ import {
   SheetModel,
   Topic,
   TopicRelationship
-} from '@blink-mind/core';
+} from '@stayfocus/core';
 import {
   RootSubLinks,
   TopicDropEffect,

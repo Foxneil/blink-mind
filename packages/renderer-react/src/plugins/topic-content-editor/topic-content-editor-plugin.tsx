@@ -1,4 +1,4 @@
-import { BlockType } from '@blink-mind/core';
+import { BlockType } from '@stayfocus/core';
 import htmlToText from 'html-to-text';
 import React from 'react';
 import { TopicContentEditor } from './topic-content-editor';

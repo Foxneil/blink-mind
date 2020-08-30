@@ -1,4 +1,4 @@
-import { BaseDocModelModifierArg } from '@blink-mind/core';
+import { BaseDocModelModifierArg } from '@stayfocus/core';
 import { List } from 'immutable';
 import { ExtDataTags, TagRecord } from './ext-data-tags';
 import { EXT_DATA_KEY_TAGS } from './utils';

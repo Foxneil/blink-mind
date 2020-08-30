@@ -7,7 +7,7 @@ import {
   SheetModel,
   Topic,
   TopicStyle
-} from '@blink-mind/core';
+} from '@stayfocus/core';
 
 export interface BaseProps {
   docModel: DocModel;

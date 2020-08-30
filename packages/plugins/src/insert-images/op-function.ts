@@ -1,8 +1,8 @@
 import {
   BaseDocModelModifierArg,
   BaseSheetModelModifierArg
-} from '@blink-mind/core';
-import { swap } from '@blink-mind/renderer-react';
+} from '@stayfocus/core';
+import { swap } from '@stayfocus/renderer-react';
 import { List } from 'immutable';
 import {
   ExtDataImages,

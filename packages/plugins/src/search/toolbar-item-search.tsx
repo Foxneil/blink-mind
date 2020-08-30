@@ -1,5 +1,5 @@
-import { OpType } from '@blink-mind/core';
-import { IconName, ToolbarItem } from '@blink-mind/renderer-react';
+import { OpType } from '@stayfocus/core';
+import { IconName, ToolbarItem } from '@stayfocus/renderer-react';
 import * as React from 'react';
 import { FOCUS_MODE_SEARCH } from './utils';
 

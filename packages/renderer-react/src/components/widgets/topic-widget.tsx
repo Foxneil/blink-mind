@@ -1,4 +1,4 @@
-import { TopicDirection } from '@blink-mind/core';
+import { TopicDirection } from '@stayfocus/core';
 import debug from 'debug';
 import * as React from 'react';
 import styled from 'styled-components';

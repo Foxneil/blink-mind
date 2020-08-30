@@ -1,4 +1,4 @@
-import { FocusMode } from '@blink-mind/core';
+import { FocusMode } from '@stayfocus/core';
 import * as React from 'react';
 import styled from 'styled-components';
 import { contentRefKey, getRelativeRect, RefKey } from '../../utils';

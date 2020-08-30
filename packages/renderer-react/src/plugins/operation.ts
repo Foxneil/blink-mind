@@ -1,4 +1,4 @@
-import { DocModelModifier, OpType } from '@blink-mind/core';
+import { DocModelModifier, OpType } from '@stayfocus/core';
 import debug from 'debug';
 const log = debug('plugin:operation');
 

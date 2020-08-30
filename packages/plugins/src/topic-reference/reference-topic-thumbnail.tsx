@@ -1,11 +1,11 @@
-import { KeyType } from '@blink-mind/core';
+import { KeyType } from '@stayfocus/core';
 import {
   Alert,
   BaseProps,
   getI18nText,
   I18nKey,
   PropKey
-} from '@blink-mind/renderer-react';
+} from '@stayfocus/renderer-react';
 import { Button } from '@blueprintjs/core';
 import * as React from 'react';
 import { useState } from 'react';

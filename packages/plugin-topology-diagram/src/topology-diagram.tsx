@@ -1,4 +1,4 @@
-import { BaseProps, BaseWidget } from '@blink-mind/renderer-react';
+import { BaseProps, BaseWidget } from '@stayfocus/renderer-react';
 import * as React from 'react';
 import { Topology } from 'topology-core';
 import { registerNode } from 'topology-core/middles';
@@ -44,7 +44,7 @@ import {
 } from 'topology-flow-diagram';
 import { ToolsConfig } from './tools-config';
 
-import '@blink-mind/icons/iconfont/topology';
+import '@stayfocus/icons/iconfont/topology';
 import styled from 'styled-components';
 import {
   activityFinal,

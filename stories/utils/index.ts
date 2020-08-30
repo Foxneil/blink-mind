@@ -1,4 +1,4 @@
-import { SheetModel } from '@blink-mind/core';
+import { SheetModel } from '@stayfocus/core';
 
 export function generateSimpleModel() {
   return SheetModel.create({

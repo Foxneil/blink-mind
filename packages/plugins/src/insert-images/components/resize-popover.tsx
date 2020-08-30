@@ -4,7 +4,7 @@
 //   iconClassName,
 //   IconName,
 //   SettingItemInput
-// } from '@blink-mind/renderer-react';
+// } from '@stayfocus/renderer-react';
 // import { Popover } from '@blueprintjs/core';
 // import * as React from 'react';
 // export function ResizePopover(props) {

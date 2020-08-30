@@ -1,4 +1,4 @@
-import { LinkStyle } from '@blink-mind/core';
+import { LinkStyle } from '@stayfocus/core';
 import * as React from 'react';
 import { getI18nText, I18nKey } from '../../../utils';
 import {

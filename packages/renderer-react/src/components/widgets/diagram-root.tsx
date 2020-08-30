@@ -1,4 +1,4 @@
-import { OpType } from '@blink-mind/core';
+import { OpType } from '@stayfocus/core';
 import { Icon } from '@blueprintjs/core';
 import { IconNames } from '@blueprintjs/icons';
 import { Tab, TabList, TabPanel, Tabs } from '@slim-ui/react-tabs';

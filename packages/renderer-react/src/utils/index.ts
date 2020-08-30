@@ -1,4 +1,4 @@
-import { KeyType } from '@blink-mind/core';
+import { KeyType } from '@stayfocus/core';
 
 export function getLinkKey(fromKey: KeyType, toKey: KeyType) {
   return `link-${fromKey}-${toKey}`;

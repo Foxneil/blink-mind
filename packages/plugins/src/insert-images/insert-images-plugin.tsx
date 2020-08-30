@@ -3,7 +3,7 @@ import {
   I18nKey,
   Icon,
   IconName
-} from '@blink-mind/renderer-react';
+} from '@stayfocus/renderer-react';
 import { MenuItem } from '@blueprintjs/core';
 import debug from 'debug';
 import { List } from 'immutable';

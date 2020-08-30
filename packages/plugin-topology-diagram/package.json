@@ -1,5 +1,5 @@
 {
-  "name": "@blink-mind/plugin-topology-diagram",
+  "name": "@stayfocus/plugin-topology-diagram",
   "files": [
     "lib/",
     "iconfont/"
@@ -8,7 +8,7 @@
   "module": "lib/main.es.js",
   "umd": "dist/main.js",
   "types": "lib/index.d.ts",
-  "version": "0.0.20-beta.11",
+  "version": "0.0.7",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -21,9 +21,9 @@
     "debug": "*",
     "react": "*",
     "styled-components": "*",
-    "@blink-mind/core": "*",
-    "@blink-mind/icons": "*",
-    "@blink-mind/renderer-react": "*"
+    "@stayfocus/core": "*",
+    "@stayfocus/icons": "*",
+    "@stayfocus/renderer-react": "*"
   },
   "dependencies": {
     "topology-activity-diagram": "^0.0.6",

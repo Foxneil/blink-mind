@@ -1,4 +1,4 @@
-import { iconClassName, TopicBlockIcon } from '@blink-mind/renderer-react';
+import { iconClassName, TopicBlockIcon } from '@stayfocus/renderer-react';
 import * as React from 'react';
 
 import {

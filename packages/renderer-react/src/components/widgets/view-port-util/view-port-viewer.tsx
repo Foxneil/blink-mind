@@ -1,5 +1,5 @@
-import { OpType } from '@blink-mind/core';
-import { ViewModeMindMap } from '@blink-mind/core';
+import { OpType } from '@stayfocus/core';
+import { ViewModeMindMap } from '@stayfocus/core';
 import { Classes, Position, Tooltip } from '@blueprintjs/core';
 import debug from 'debug';
 import * as React from 'react';

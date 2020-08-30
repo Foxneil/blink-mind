@@ -8,7 +8,7 @@ import {
   IControllerRunContext,
   SheetModel,
   Topic
-} from '@blink-mind/core';
+} from '@stayfocus/core';
 import debug from 'debug';
 import { isImmutable, List, Map } from 'immutable';
 

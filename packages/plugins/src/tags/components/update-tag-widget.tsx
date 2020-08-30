@@ -8,7 +8,7 @@ import {
   SettingItemInput,
   SettingItemInputProps,
   SettingRow
-} from '@blink-mind/renderer-react';
+} from '@stayfocus/renderer-react';
 import * as React from 'react';
 import { useState } from 'react';
 import { ExtDataTags, TagRecord } from '../ext-data-tags';

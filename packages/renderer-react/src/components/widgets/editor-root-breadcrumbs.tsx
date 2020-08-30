@@ -1,4 +1,4 @@
-import { OpType } from '@blink-mind/core';
+import { OpType } from '@stayfocus/core';
 import {
   Breadcrumb,
   Breadcrumbs,

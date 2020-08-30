@@ -1,4 +1,4 @@
-import { LinkStyle, OpType, TopicContentStyle } from '@blink-mind/core';
+import { LinkStyle, OpType, TopicContentStyle } from '@stayfocus/core';
 import debug from 'debug';
 import * as React from 'react';
 import { getI18nText, I18nKey } from '../../../utils';
@@ -11,7 +11,7 @@ import {
   SettingTitle
 } from '../../common';
 
-import { ViewModeMindMap } from '@blink-mind/core';
+import { ViewModeMindMap } from '@stayfocus/core';
 import { BorderStyleEditor } from './border-style-editor';
 import { ClearAllCustomStyle } from './clear-all-custom-style';
 import { LinkStyleEditor, LinkStyleEditorProps } from './link-style-editor';

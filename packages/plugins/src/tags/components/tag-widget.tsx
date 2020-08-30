@@ -1,4 +1,4 @@
-import { BaseProps } from '@blink-mind/renderer-react';
+import { BaseProps } from '@stayfocus/renderer-react';
 import {
   ContextMenu,
   ContextMenuTarget,

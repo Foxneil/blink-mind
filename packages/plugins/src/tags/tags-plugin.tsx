@@ -1,4 +1,4 @@
-import { getI18nText, I18nKey } from '@blink-mind/renderer-react';
+import { getI18nText, I18nKey } from '@stayfocus/renderer-react';
 import * as React from 'react';
 import { TagEditor } from './components/tag-editor';
 
@@ -20,8 +20,8 @@ import {
   OP_TYPE_UPDATE_TAG
 } from './utils';
 
-import { IControllerRunContext } from '@blink-mind/core';
-import { BaseProps } from '@blink-mind/renderer-react';
+import { IControllerRunContext } from '@stayfocus/core';
+import { BaseProps } from '@stayfocus/renderer-react';
 import { List } from 'immutable';
 import { TagWidget, TagWidgetProps } from './components/tag-widget';
 import { ExtDataTags, TagRecord } from './ext-data-tags';
