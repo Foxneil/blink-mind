@@ -16,16 +16,16 @@
     "lib": ["dom", "es2015"],
     "paths": {
       //      "@/*": ["src/*"],
-      "@blink-mind/core": ["packages/core/src"],
-      "@blink-mind/icons": ["packages/icons"],
-      "@blink-mind/renderer-react": ["packages/renderer-react/src"],
-      "@blink-mind/plugin-json-serializer": [
+      "@stayfocus/core": ["packages/core/src"],
+      "@stayfocus/icons": ["packages/icons"],
+      "@stayfocus/renderer-react": ["packages/renderer-react/src"],
+      "@stayfocus/plugin-json-serializer": [
         "packages/plugin-json-serializer/src"
       ],
-      "@blink-mind/plugin-topology-diagram": [
+      "@stayfocus/plugin-topology-diagram": [
         "packages/plugin-topology-diagram/src"
       ],
-      "@blink-mind/plugins": ["packages/plugins/src"]
+      "@stayfocus/plugins": ["packages/plugins/src"]
     }
   },
   "references": [

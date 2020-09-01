@@ -63,25 +63,25 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '@blink-mind/core': path.join(__dirname, '../packages/core/src/index'),
-      '@blink-mind/icons': path.join(__dirname, '../packages/icons/'),
-      '@blink-mind/renderer-react': path.join(
+      '@stayfocus/core': path.join(__dirname, '../packages/core/src/index'),
+      '@stayfocus/icons': path.join(__dirname, '../packages/icons/'),
+      '@stayfocus/renderer-react': path.join(
         __dirname,
         '../packages/renderer-react/src/index'
       ),
-      '@blink-mind/plugin-json-serializer': path.join(
+      '@stayfocus/plugin-json-serializer': path.join(
         __dirname,
         '../packages/plugin-json-serializer/src/index'
       ),
-      '@blink-mind/plugin-rich-text-editor': path.join(
+      '@stayfocus/plugin-rich-text-editor': path.join(
         __dirname,
         '../packages/plugin-rich-text-editor/src/index'
       ),
-      '@blink-mind/plugin-topology-diagram': path.join(
+      '@stayfocus/plugin-topology-diagram': path.join(
         __dirname,
         '../packages/plugin-topology-diagram/src/index'
       ),
-      '@blink-mind/plugins': path.join(
+      '@stayfocus/plugins': path.join(
         __dirname,
         '../packages/plugins/src/index'
       ),

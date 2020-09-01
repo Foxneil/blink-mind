@@ -11,14 +11,14 @@ import {
   ThemeSelectorPlugin,
   // TopicReferencePlugin,
   UndoRedoPlugin
-} from '@blink-mind/plugins';
+} from '@stayfocus/plugins';
 import {
   Diagram,
   ElementItemConfigs,
   iconClassName,
   IconName,
   ToolbarItem
-} from '@blink-mind/renderer-react';
+} from '@stayfocus/renderer-react';
 import { Classes } from '@blueprintjs/core';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
