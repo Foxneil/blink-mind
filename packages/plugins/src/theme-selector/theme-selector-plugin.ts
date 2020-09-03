@@ -1,4 +1,4 @@
-import { defaultTheme, OpType, SheetModel, ThemeType } from '@stayfocus/core';
+import { defaultTheme, youjihuaDefalutTheme, OpType, SheetModel, ThemeType } from '@stayfocus/core';
 import {
   darkTheme1,
   theme1,
@@ -6,7 +6,8 @@ import {
   theme3,
   theme4,
   themeRandomColorRound,
-  themeRandomColorSquare
+  themeRandomColorSquare,
+  youjihuaDefalut
 } from './themes';
 
 export type ThemeMap = Map<string, ThemeType>;
@@ -20,7 +21,8 @@ export function ThemeSelectorPlugin() {
     ['theme1', theme1],
     ['theme2', theme2],
     ['theme3', theme3],
-    ['theme4', theme4]
+    ['theme4', theme4],
+    ['youjihuaDefalut',youjihuaDefalutTheme],
   ]);
   return {
     getAllThemes(props) {
@@ -38,6 +40,7 @@ export function ThemeSelectorPlugin() {
       if (!allThemes.has(themeKey)) {
         throw new Error(`the theme key ${themeKey} is not exist!`);
       }
+      console.log("当前主题",themeKey);
       controller.run('operation', {
         ...ctx,
         opType: OpType.SET_THEME,

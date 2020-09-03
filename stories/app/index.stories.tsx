@@ -83,7 +83,7 @@ const plugins = [
 class AppDemo extends BaseDemo {
   constructor(props) {
     super(props);
-    document.body.classList.add(Classes.DARK);
+    // document.body.classList.add(Classes.DARK);
   }
 
   initModel() {

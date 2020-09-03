@@ -1,5 +1,5 @@
 import { Record } from 'immutable';
-import { defaultTheme, ThemeType } from '../configs/theme';
+import { defaultTheme,youjihuaDefalutTheme, ThemeType } from '../configs/theme';
 import { DiagramLayoutType, ViewModeMindMap } from '../types';
 
 export type ConfigRecordType = {
@@ -15,7 +15,7 @@ const defaultConfigRecord: ConfigRecordType = {
   readOnly: false,
   allowUndo: true,
   layoutDir: DiagramLayoutType.LEFT_TO_RIGHT,
-  theme: defaultTheme
+  theme: youjihuaDefalutTheme
 };
 
 export class Config extends Record(defaultConfigRecord) {
