@@ -104,7 +104,6 @@ export class RootWidget extends React.Component<Props> {
       case DiagramLayoutType.TOP_TO_BOTTOM:
         return (
           <>
-            {rootTopic}
             {this.renderPartTopics(partTopics.B, 'B')}
             {children}
           </>

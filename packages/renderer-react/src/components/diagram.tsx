@@ -104,6 +104,8 @@ class Diagram extends React.Component<Props> implements IDiagram {
         controller: this.controller
       });
     }
+    console.log("数据",docModel);
+    
     this.diagramProps = {
       ...this.props,
       docModel,

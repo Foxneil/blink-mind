@@ -8,28 +8,25 @@ export const youjihuaDefalutTheme: ThemeType = {
   marginH: 45,
   marginV: 10,
   contentStyle: {
-    lineHeight: '1.5'
+    lineHeight: '1.2'
   },
   linkStyle: {
-    lineRadius: 5,
+    lineRadius: 5, 
     lineType: 'curve'
   },
   rootTopic: {
     contentStyle: {
       background: 'linear-gradient(40deg, #02809C 0%, #00F6AC 100%)',
       color: '#fff',
-      fontSize: '34px',
+      fontSize: '24px',
       borderRadius: '4px',
-      padding: '16px 18px 16px 18px',
-      borderWidth: '3px',
-      borderStyle: 'solid',
-      borderImage: 'linear-gradient(40deg, rgba(2, 128, 156, 1), rgba(0, 246, 172, 1)) 3 3'
+      padding: '8px 18px 8px 18px',
     },
 
     subLinkStyle: {
       lineType: 'curve',
       lineWidth: '2px',
-      lineColor: '#43a9ff'
+      lineColor: '#898A97'
     }
   },
   primaryTopic: {
@@ -39,7 +36,7 @@ export const youjihuaDefalutTheme: ThemeType = {
       borderStyle: 'solid',
       borderColor: '#898A97',
       borderRadius: '4px',
-      color: 'rgb(103,103,103)',
+      color: 'rgba(1, 3, 31, 0.85)',
       fontSize: '18px',
       padding: '5px'
     },
@@ -48,25 +45,27 @@ export const youjihuaDefalutTheme: ThemeType = {
       lineType: 'round',
       lineRadius: 5,
       lineWidth: '2px',
-      lineColor: '#43a9ff'
+      lineColor: '#898A97'
     }
   },
 
   normalTopic: {
     contentStyle: {
-      background: '#fff',
-      borderRadius: '5px',
-      color: 'rgb(103,103,103)',
-      fontSize: '13px',
-      padding: '0',
-      boxShadow: '1px 1px 1px #ccc'
+      background: '#F2F2F2',
+      borderWidth: '1px',
+      borderStyle: 'solid',
+      borderColor: '#898A97',
+      borderRadius: '4px',
+      color: 'rgba(1, 3, 31, 0.85)',
+      fontSize: '18px',
+      padding: '5px'
     },
 
     subLinkStyle: {
       lineType: 'round',
       lineRadius: 5,
       lineWidth: '1px',
-      lineColor: '#43a9ff'
+      lineColor: '#898A97'
     }
   }
 };

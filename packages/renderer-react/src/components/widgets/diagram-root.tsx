@@ -24,7 +24,7 @@ const TabsContainer = styled.div`
 `;
 
 export function DiagramRoot(props) {
-  const { controller, docModel } = props;
+  const { controller, docModel,multiSheetModel=false} = props;
   const onClickAddSheet = () => {
     controller.run('operation', {
       ...props,
@@ -76,12 +76,12 @@ export function DiagramRoot(props) {
   //   className: 'tab-panel react-tabs__tab-panel'
   // };
   const tabPanelProps = {
-    className: 'tab-panel',
+    className: multiSheetModel?'tab-panel':'single-tab-panel',
     selectedClassName: 'tab-panel__selected'
   };
   const tabPanels = sheetModels.map(model => {
     return (
-      <TabPanel key={i++} {...tabPanelProps}>
+      <TabPanel key={i++} {...tabPanelProps} multiSheetModel>
         <Theme theme={model.config.theme}>
           {controller.run('renderSheet', {
             ...props,
@@ -100,9 +100,13 @@ export function DiagramRoot(props) {
   };
   const child = (
     <TabsContainer>
-      <Tabs {...tabsProps}>
+      <Tabs {...tabsProps} >
         {tabPanels}
-        <TabList className="tab-list">{tabs}</TabList>
+        {
+          multiSheetModel &&
+          <TabList className="tab-list">{tabs}</TabList>
+        }
+        
       </Tabs>
     </TabsContainer>
   );
