@@ -21,7 +21,8 @@ export const youjihuaDefalutTheme: ThemeType = {
       fontSize: '34px',
       borderRadius: '4px',
       padding: '16px 18px 16px 18px',
-      // border: '3px solid',
+      borderWidth: '3px',
+      borderStyle: 'solid',
       borderImage: 'linear-gradient(40deg, rgba(2, 128, 156, 1), rgba(0, 246, 172, 1)) 3 3'
     },
 
