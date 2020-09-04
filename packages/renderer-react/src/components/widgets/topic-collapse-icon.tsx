@@ -24,8 +24,8 @@ const Icon = styled.div`
   box-shadow: 0 1px 2px rgba(0,0,0,0.3);
   //@ts-ignore
   //background: ${props => props.background};
-  background: #fff;
-  color: #888;
+  background: #23253C;
+  color: #fff;
   cursor: pointer;
   padding: 0;
   //font-size: 16px !important;

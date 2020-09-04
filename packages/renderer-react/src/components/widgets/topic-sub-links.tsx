@@ -54,8 +54,8 @@ export class TopicSubLinks extends BaseWidget<Props, State> {
     log('contentRect', contentRect);
     let p1: Point, p2: Point, p3: Point, p4: Point;
 
-    // p2 折叠icon 右侧10个像素
-    const marginCollapseIcon = 10;
+    // p2 折叠icon 右侧20个像素
+    const marginCollapseIcon = 20;
     let y =
       (mLinkStyle.hasUnderline ? contentRect.bottom : centerY(contentRect)) -
       svgRect.top;

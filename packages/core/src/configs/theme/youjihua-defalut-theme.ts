@@ -5,14 +5,14 @@ export const youjihuaDefalutTheme: ThemeType = {
   randomColor: false,
   background: '#FAFAFB',
   highlightColor: '#01CCA7',
-  marginH: 45,
-  marginV: 10,
+  marginH: 80,
+  marginV: 20,
   contentStyle: {
     lineHeight: '1.2'
   },
   linkStyle: {
     lineRadius: 5, 
-    lineType: 'curve'
+    lineType: 'round'
   },
   rootTopic: {
     contentStyle: {
@@ -24,7 +24,7 @@ export const youjihuaDefalutTheme: ThemeType = {
     },
 
     subLinkStyle: {
-      lineType: 'curve',
+      lineType: 'round',
       lineWidth: '2px',
       lineColor: '#898A97'
     }
