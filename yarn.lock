@@ -2193,6 +2193,21 @@
     classnames "^2.2.0"
     prop-types "^15.5.0"
 
+"@stayfocus/core@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@stayfocus/core/-/core-0.0.7.tgz#2353947071ee85902338f6b42a7d8c6c8eda2284"
+  integrity sha512-MUs1N6oMNvN0l00mpePqe4Cz/qm2J2JtsRIZk3QWoRp7E3q2KQM9iEQN0kM6mVmBgysMguflk6f0VGImCCV3lA==
+  dependencies:
+    html-to-text "^5.1.1"
+    immutable "^4.0.0-rc.12"
+    is-plain-object "^3.0.0"
+    memoize-one "^5.1.1"
+
+"@stayfocus/icons@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@stayfocus/icons/-/icons-0.0.7.tgz#36044f030f43ecf307fc94266d49c28dbf357e71"
+  integrity sha512-3LgTonnaQ7Y6/RlVmpujQI+5Hrwcv19Qmoj9zh1QSbKZ03rhGE3A7p71/IH5uuN4Gg3h0foDMu5XrXytSYmLtg==
+
 "@storybook/addon-actions@5.2.5":
   version "5.2.5"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-5.2.5.tgz#e8279907367392387d5c3c6af6031f9da2be9816"
