@@ -1,5 +1,5 @@
-import { IControllerRunContext } from '@stayfocus/core';
 import { Classes } from '@blueprintjs/core';
+import { IControllerRunContext } from '@stayfocus/core';
 
 export function ThemePlugin() {
   return {

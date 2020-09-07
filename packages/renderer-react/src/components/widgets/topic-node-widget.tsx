@@ -1,5 +1,5 @@
-import { FocusMode, OpType, TopicDirection } from '@stayfocus/core';
 import { ContextMenuTarget } from '@blueprintjs/core';
+import { FocusMode, OpType, TopicDirection } from '@stayfocus/core';
 import debug from 'debug';
 import * as React from 'react';
 import { useRef } from 'react';

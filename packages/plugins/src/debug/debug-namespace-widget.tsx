@@ -1,10 +1,10 @@
+import { Checkbox } from '@blueprintjs/core';
 import {
   SettingItemButton,
   SettingItemInput,
   SettingItemInputProps,
   SettingRow
 } from '@stayfocus/renderer-react';
-import { Checkbox } from '@blueprintjs/core';
 import React, { useState } from 'react';
 
 const _debugNameSpaces = [

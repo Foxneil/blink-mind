@@ -1,3 +1,4 @@
+import { Alert } from '@blueprintjs/core';
 import {
   BaseProps,
   getI18nText,
@@ -9,7 +10,6 @@ import {
   SettingItemInputProps,
   SettingRow
 } from '@stayfocus/renderer-react';
-import { Alert } from '@blueprintjs/core';
 import * as React from 'react';
 import { useState } from 'react';
 import { ExtDataTags, TagRecord } from '../ext-data-tags';

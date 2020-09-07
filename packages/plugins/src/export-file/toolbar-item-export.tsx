@@ -1,9 +1,9 @@
+import { Dialog, Menu, MenuDivider, MenuItem } from '@blueprintjs/core';
 import {
   browserDownloadFile,
   IconName,
   ToolbarItem
 } from '@stayfocus/renderer-react';
-import { Dialog, Menu, MenuDivider, MenuItem } from '@blueprintjs/core';
 import * as React from 'react';
 import { useState } from 'react';
 

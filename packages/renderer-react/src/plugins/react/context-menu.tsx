@@ -1,5 +1,5 @@
-import { BlockType, OpType, ViewModeMindMap } from '@stayfocus/core';
 import { MenuItem } from '@blueprintjs/core';
+import { BlockType, OpType, ViewModeMindMap } from '@stayfocus/core';
 import * as React from 'react';
 import {
   KeyboardHotKeyWidget,

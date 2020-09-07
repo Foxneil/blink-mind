@@ -1,6 +1,6 @@
-import { isAllSibiling, SheetModel } from '@stayfocus/core';
-import { createKey, Topic, OpType } from '@stayfocus/core';
 import { MenuItem } from '@blueprintjs/core';
+import { isAllSibiling, SheetModel } from '@stayfocus/core';
+import { createKey, OpType, Topic } from '@stayfocus/core';
 import * as React from 'react';
 import { KeyboardHotKeyWidget } from '../../components';
 import { getI18nText, I18nKey, Icon, IconName } from '../../utils';
@@ -138,7 +138,7 @@ export function PastePlugin() {
     },
 
     processTopicExtData(ctx) {
-      let { extData } = ctx;
+      const { extData } = ctx;
       return extData;
     },
 

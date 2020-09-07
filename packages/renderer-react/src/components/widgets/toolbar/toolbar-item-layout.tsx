@@ -1,5 +1,5 @@
-import { DiagramLayoutType, OpType } from '@stayfocus/core';
 import { Menu, MenuItem, Popover } from '@blueprintjs/core';
+import { DiagramLayoutType, OpType } from '@stayfocus/core';
 import * as React from 'react';
 import { getI18nText, I18nKey, Icon, IconName } from '../../../utils';
 import { ToolbarItem, ToolbarItemPopoverTarget } from '../../common';

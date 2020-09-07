@@ -1,10 +1,10 @@
-import { OpType } from '@stayfocus/core';
 import {
   Breadcrumb,
   Breadcrumbs,
   PopoverPosition,
   Tooltip
 } from '@blueprintjs/core';
+import { OpType } from '@stayfocus/core';
 import * as React from 'react';
 import styled from 'styled-components';
 import { PropKey } from '../../utils';

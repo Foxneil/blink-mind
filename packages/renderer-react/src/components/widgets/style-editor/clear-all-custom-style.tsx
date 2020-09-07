@@ -1,5 +1,5 @@
-import { OpType } from '@stayfocus/core';
 import { Button } from '@blueprintjs/core';
+import { OpType } from '@stayfocus/core';
 import * as React from 'react';
 import { getI18nText, I18nKey } from '../../../utils';
 import { SettingGroup, SettingItem } from '../../common';

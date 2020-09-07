@@ -1,5 +1,5 @@
-import { BlockType, DescBlockData, FocusMode, OpType } from '@stayfocus/core';
 import { Drawer } from '@blueprintjs/core';
+import { BlockType, DescBlockData, FocusMode, OpType } from '@stayfocus/core';
 import * as React from 'react';
 import { useRef } from 'react';
 import styled from 'styled-components';

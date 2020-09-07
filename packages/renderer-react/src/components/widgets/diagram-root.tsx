@@ -1,8 +1,8 @@
-import { OpType } from '@stayfocus/core';
 import { Icon } from '@blueprintjs/core';
 import { IconNames } from '@blueprintjs/icons';
 import { Tab, TabList, TabPanel, Tabs } from '@slim-ui/react-tabs';
 import '@slim-ui/react-tabs/style/react-tabs.css';
+import { OpType } from '@stayfocus/core';
 import * as React from 'react';
 import styled from 'styled-components';
 import Theme from '../../plugins/react/theme';

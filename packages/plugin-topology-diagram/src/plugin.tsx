@@ -1,10 +1,10 @@
+import { MenuDivider, MenuItem } from '@blueprintjs/core';
 import {
   BaseSheetModelModifierArg,
   SheetModelModifier,
   toDocModelModifierFunc
 } from '@stayfocus/core';
 import { getI18nText, I18nKey, Icon } from '@stayfocus/renderer-react';
-import { MenuDivider, MenuItem } from '@blueprintjs/core';
 import * as React from 'react';
 import { TopicBlockTopology } from './topic-block-topology';
 import { TopologyDrawer } from './topology-drawer';

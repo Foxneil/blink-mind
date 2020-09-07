@@ -1,6 +1,6 @@
+import { Classes, Position, Tooltip } from '@blueprintjs/core';
 import { OpType } from '@stayfocus/core';
 import { ViewModeMindMap } from '@stayfocus/core';
-import { Classes, Position, Tooltip } from '@blueprintjs/core';
 import debug from 'debug';
 import * as React from 'react';
 import styled from 'styled-components';

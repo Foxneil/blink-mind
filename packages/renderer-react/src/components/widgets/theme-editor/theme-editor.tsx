@@ -1,5 +1,5 @@
-import { isThemeType, OpType, ThemeType, TopicStyle } from '@stayfocus/core';
 import { Tab, Tabs } from '@blueprintjs/core';
+import { isThemeType, OpType, ThemeType, TopicStyle } from '@stayfocus/core';
 import debug from 'debug';
 import { cloneDeep, merge } from 'lodash';
 import { useState } from 'react';

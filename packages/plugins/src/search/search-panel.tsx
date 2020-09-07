@@ -1,3 +1,5 @@
+import { IInputGroupProps, Keys } from '@blueprintjs/core';
+import { ItemListPredicate, ItemRenderer, Omnibar } from '@blueprintjs/select';
 import { FocusMode, OpType } from '@stayfocus/core';
 import {
   BaseProps,
@@ -5,8 +7,6 @@ import {
   I18nKey,
   PropKey
 } from '@stayfocus/renderer-react';
-import { IInputGroupProps, Keys } from '@blueprintjs/core';
-import { ItemListPredicate, ItemRenderer, Omnibar } from '@blueprintjs/select';
 import * as React from 'react';
 import styled from 'styled-components';
 import {

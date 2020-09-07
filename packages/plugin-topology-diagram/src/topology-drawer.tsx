@@ -1,10 +1,10 @@
+import { Drawer } from '@blueprintjs/core';
 import {
   getI18nText,
   I18nKey,
   Icon,
   stopPropagation
 } from '@stayfocus/renderer-react';
-import { Drawer } from '@blueprintjs/core';
 import * as React from 'react';
 import { TopologyDiagram } from './topology-diagram';
 

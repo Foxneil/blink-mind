@@ -1,10 +1,10 @@
-import { BaseProps } from '@stayfocus/renderer-react';
 import {
   ContextMenu,
   ContextMenuTarget,
   Divider,
   Menu
 } from '@blueprintjs/core';
+import { BaseProps } from '@stayfocus/renderer-react';
 import * as React from 'react';
 import styled from 'styled-components';
 import { TagRecord } from '../ext-data-tags';

@@ -1,10 +1,10 @@
+import { MenuItem } from '@blueprintjs/core';
 import {
   getI18nText,
   I18nKey,
   Icon,
   IconName
 } from '@stayfocus/renderer-react';
-import { MenuItem } from '@blueprintjs/core';
 import debug from 'debug';
 import { List } from 'immutable';
 import React from 'react';
@@ -175,14 +175,14 @@ export function InsertImagesPlugin() {
 
     processTopicExtData(ctx, next) {
       let extData = next();
-      let { topic } = ctx;
+      const { topic } = ctx;
       if (topic.extData[EXT_DATA_KEY_IMAGES]) {
         if (!extData.has(EXT_DATA_KEY_IMAGES)) {
-          let extDataImages = new ExtDataImages();
+          const extDataImages = new ExtDataImages();
           extData = extData.set(EXT_DATA_KEY_IMAGES, extDataImages);
         }
         let list = List();
-        for (let image of topic.extData[EXT_DATA_KEY_IMAGES]) {
+        for (const image of topic.extData[EXT_DATA_KEY_IMAGES]) {
           extData = extData.updateIn(
             [EXT_DATA_KEY_IMAGES, 'images'],
             images => {

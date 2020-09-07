@@ -1,3 +1,4 @@
+import { MenuItem } from '@blueprintjs/core';
 import { ViewModeMindMap } from '@stayfocus/core';
 import {
   BaseProps,
@@ -8,7 +9,6 @@ import {
   RefKey,
   topicWidgetRootRefKey
 } from '@stayfocus/renderer-react';
-import { MenuItem } from '@blueprintjs/core';
 import { saveAs } from 'file-saver';
 import { toBlob, toSvgDataURL } from 'html-to-image';
 import * as React from 'react';

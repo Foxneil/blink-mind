@@ -1,4 +1,4 @@
-import { defaultTheme, youjihuaDefalutTheme, OpType, SheetModel, ThemeType } from '@stayfocus/core';
+import { defaultTheme, OpType, SheetModel, ThemeType } from '@stayfocus/core';
 import {
   darkTheme1,
   theme1,
@@ -22,7 +22,6 @@ export function ThemeSelectorPlugin() {
     ['theme2', theme2],
     ['theme3', theme3],
     ['theme4', theme4],
-    ['youjihuaDefalut',youjihuaDefalutTheme],
   ]);
   return {
     getAllThemes(props) {

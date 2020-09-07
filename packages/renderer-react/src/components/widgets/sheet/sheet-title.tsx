@@ -1,5 +1,5 @@
-import { OpType } from '@stayfocus/core';
 import { ContextMenuTarget, Divider, Menu, MenuItem } from '@blueprintjs/core';
+import { OpType } from '@stayfocus/core';
 import * as React from 'react';
 import styled from 'styled-components';
 import { getI18nText, I18nKey } from '../../../utils';

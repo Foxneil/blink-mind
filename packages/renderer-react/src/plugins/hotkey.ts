@@ -1,7 +1,7 @@
 import { BlockType, OpType } from '@stayfocus/core';
 
-import { ViewModeMindMap } from '@stayfocus/core';
 import { IHotkeyProps } from '@blueprintjs/core';
+import { ViewModeMindMap } from '@stayfocus/core';
 import { HotKeyName, HotKeysConfig } from '../types';
 
 function op(opType: string, props) {

@@ -1,3 +1,4 @@
+import { Alert, Classes, Position, Tooltip } from '@blueprintjs/core';
 import { OpType } from '@stayfocus/core';
 import {
   BaseProps,
@@ -8,7 +9,6 @@ import {
   IconName,
   ZIndex
 } from '@stayfocus/renderer-react';
-import { Alert, Classes, Position, Tooltip } from '@blueprintjs/core';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Topology } from 'topology-core';

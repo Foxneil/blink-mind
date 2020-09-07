@@ -1,3 +1,4 @@
+import { Button } from '@blueprintjs/core';
 import { KeyType } from '@stayfocus/core';
 import {
   Alert,
@@ -6,7 +7,6 @@ import {
   I18nKey,
   PropKey
 } from '@stayfocus/renderer-react';
-import { Button } from '@blueprintjs/core';
 import * as React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';

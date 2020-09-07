@@ -1,6 +1,6 @@
+import { Button } from '@blueprintjs/core';
 import { FocusMode, OpType } from '@stayfocus/core';
 import { Flex, getI18nText, I18nKey, ZIndex } from '@stayfocus/renderer-react';
-import { Button } from '@blueprintjs/core';
 import * as React from 'react';
 import styled from 'styled-components';
 import { OP_TYPE_SET_REFERENCE_TOPICS } from './utils';

@@ -1,4 +1,4 @@
-import { DocModel, OpType, BlockType, FocusMode } from '@stayfocus/core';
+import { BlockType, DocModel, FocusMode, OpType } from '@stayfocus/core';
 import { Stack } from 'immutable';
 
 const log = require('debug')('plugin:undo');
