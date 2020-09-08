@@ -220,7 +220,7 @@ function addChild({
   let topic = model.getTopic(topicKey);
   let newTopic;
   if (topic) {
-    const child = Topic.create({key: createKey(), parentKey: topic.key});
+    const child = Topic.create({key: createKey(),content:'新主题',parentKey: topic.key});
     newTopic = child;
     topic = topic
       .set('collapse', false)
@@ -230,11 +230,12 @@ function addChild({
     model = model.update('topics', topics =>
       topics.set(topicKey, topic).set(child.key, child)
     );
-    focusTopic({
+    let result = focusTopic({
       model,
       topicKey: child.key,
       focusMode: FocusMode.EDITING_CONTENT
     });
+    model = result.model;
     return {
       model: model,
       topicKey: newTopic.key,
@@ -253,7 +254,7 @@ function addChild({
 function addSibling({
                       model,
                       topicKey,
-                      content
+                      content='新主题'
                     }: BaseSheetModelModifierArg & {
   content?: string;
 }): SheetModelModifierResult {
@@ -277,11 +278,12 @@ function addSibling({
       .updateIn(['topics', pItem.key, 'subKeys'], subKeys =>
         subKeys.insert(idx + 1, sibling.key)
       );
-    focusTopic({
+    let result = focusTopic({
       model,
       topicKey: sibling.key,
       focusMode: FocusMode.EDITING_CONTENT
     });
+    model = result.model;
     return {
       model: model,
       topicKey: topicKey,
@@ -357,7 +359,8 @@ function deleteTopic({
 function deleteTopics({model, topicKeys}): SheetModelModifierResult {
   if (topicKeys == null) topicKeys = model.focusOrSelectedKeys;
   topicKeys.forEach(topicKey => {
-    model = deleteTopic({model, topicKey});
+    let result = deleteTopic({model, topicKey});
+    model = result.model;
   });
   return {
     model: model,
