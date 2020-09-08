@@ -113,9 +113,9 @@ export class Controller {
     return this.run('getValue', { ...arg, propKey });
   }
 
-  change(model: DocModel, callback?: ModelChangeCallback) {
-    log('change', model, model.currentSheetModel);
-    this.docModel = model;
-    this.onChange(model, callback);
+  change(event, callback?: ModelChangeCallback) {
+    log('change', event.model, event.model.currentSheetModel);
+    this.docModel = event.model;
+    this.onChange(event, callback);
   }
 }

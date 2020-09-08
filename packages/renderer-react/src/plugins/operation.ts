@@ -148,7 +148,7 @@ export function OperationPlugin() {
 
       const opMap = controller.run('getOpMap', ctx);
       controller.run('beforeOperation', ctx);
-
+      let event = {};
       let newDocModel;
       if (opArray != null) {
         newDocModel = opArray.reduce((acc, cur) => {
@@ -176,7 +176,10 @@ export function OperationPlugin() {
           ...ctx,
           docModel: newDocModel
         });
+
+        event = opResult;
       }
+      event['opType'] = opType;
       // log(
       //   'newDocModel:',
       //   newDocModel,
@@ -192,8 +195,9 @@ export function OperationPlugin() {
           undoStack: undoStack.push(docModel)
         });
       }
-      controller.change(newDocModel, callback ? callback(newDocModel) : null);
+      controller.change(event, callback ? callback(newDocModel) : null);
       controller.run('afterOperation', ctx);
+      
       // log(controller.model);
     },
 
