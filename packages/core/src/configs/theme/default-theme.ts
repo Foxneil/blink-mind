@@ -24,7 +24,7 @@ export const defaultTheme: ThemeType = {
     },
 
     subLinkStyle: {
-      lineType: 'round',
+      lineType: 'curve',
       lineWidth: '2px',
       lineColor: '#898A97'
     }

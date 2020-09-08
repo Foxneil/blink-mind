@@ -46,11 +46,12 @@ export function TopicReferencePlugin() {
 
     selectedTopicKeys = new Set(extData.getReferenceKeys(topicKey));
 
-    model = SheetModelModifier.focusTopic({
+    const result = SheetModelModifier.focusTopic({
       model,
       topicKey,
       focusMode: FOCUS_MODE_SET_REFERENCE_TOPICS
     });
+    model = result.model;
     docModel = setCurrentSheetModel(docModel, model);
     return docModel;
   }

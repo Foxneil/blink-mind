@@ -7,7 +7,7 @@ export function I18nPlugin() {
     [I18nKey.COPY, 'Copy'],
     [I18nKey.PASTE, 'Paste'],
     [I18nKey.DUPLICATE, 'Duplicate'],
-    [I18nKey.DELETE, 'Delete'],
+    [I18nKey.DELETE, '删除'],
 
     [I18nKey.CONFIRM, 'Confirm'],
     [I18nKey.CANCEL, 'Cancel'],
@@ -25,13 +25,13 @@ export function I18nPlugin() {
     [I18nKey.ADD_SHEET, 'Add Sheet'],
     [I18nKey.SHEET, 'Sheet'],
 
-    [I18nKey.EDIT, 'Edit'],
-    [I18nKey.ADD_CHILD, 'Add Child'],
-    [I18nKey.ADD_SIBLING, 'Add Sibling'],
+    [I18nKey.EDIT, '编辑'],
+    [I18nKey.ADD_CHILD, '添加下级节点'],
+    [I18nKey.ADD_SIBLING, '添加同级节点'],
     [I18nKey.EDIT_NOTES, 'Edit Notes'],
     [I18nKey.REMOVE_NOTES, 'Remove Notes'],
     [I18nKey.CONVERT_TO_PLAIN_TEXT, 'Convert to Plain Text'],
-    [I18nKey.SET_AS_EDITOR_ROOT, 'Set as Editor Root'],
+    [I18nKey.SET_AS_EDITOR_ROOT, '聚焦模式'],
     [I18nKey.EXPORT, 'Export'],
     [I18nKey.EDIT_TOPOLOGY_DIAGRAM, 'Edit Topology Diagram'],
     [I18nKey.SET_TOPIC_REFERENCES, 'Set Topic References'],
@@ -96,14 +96,14 @@ export function I18nPlugin() {
     [I18nKey.CURVE, 'Curve'],
     [I18nKey.LINE, 'Line'],
 
-    [I18nKey.COLLAPSE_ALL, 'Collapse All'],
-    [I18nKey.EXPAND_ALL, 'Expand All'],
-    [I18nKey.CENTER_ROOT_TOPIC, 'Center Root Topic'],
-    [I18nKey.ZOOM, 'zoom'],
-    [I18nKey.ZOOM_IN, 'Zoom In'],
-    [I18nKey.ZOOM_OUT, 'Zoom Out'],
-    [I18nKey.RESET, 'Reset'],
-    [I18nKey.RESET_ZOOM, 'Reset Zoom'],
+    [I18nKey.COLLAPSE_ALL, '全部折叠'],
+    [I18nKey.EXPAND_ALL, '全部展开'],
+    [I18nKey.CENTER_ROOT_TOPIC, '定位到中心主题'],
+    [I18nKey.ZOOM, '缩放'],
+    [I18nKey.ZOOM_IN, '放大'],
+    [I18nKey.ZOOM_OUT, '缩小'],
+    [I18nKey.RESET, '重置'],
+    [I18nKey.RESET_ZOOM, '重置缩放'],
 
     [I18nKey.NOTE_PLACEHOLDER, 'Write topic notes here'],
 
@@ -151,8 +151,8 @@ export function I18nPlugin() {
     [I18nKey.HYPERLINK, 'Hyperlink'],
     [I18nKey.INSERT_HYPERLINK, 'Insert Hyperlink'],
     [I18nKey.SET_TO_ORIGINAL_SIZE, 'Set to original size'],
-    [I18nKey.MOVE_UP, 'Move up'],
-    [I18nKey.MOVE_DOWN, 'Move down']
+    [I18nKey.MOVE_UP, '上移'],
+    [I18nKey.MOVE_DOWN, '下移']
   ]);
 
   return {

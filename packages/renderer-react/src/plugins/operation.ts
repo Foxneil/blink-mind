@@ -150,7 +150,6 @@ export function OperationPlugin() {
       controller.run('beforeOperation', ctx);
 
       let newDocModel;
-
       if (opArray != null) {
         newDocModel = opArray.reduce((acc, cur) => {
           const { opType } = cur;
@@ -159,7 +158,9 @@ export function OperationPlugin() {
           const opFunc = opMap.get(opType);
           const opFuncProps = { controller, ...cur, docModel: acc };
           let res = controller.run('beforeOpFunction', opFuncProps);
-          res = opFunc({ ...opFuncProps, docModel: res });
+          const opResult = opFunc({ ...opFuncProps, docModel: res });
+          debugger
+          res = opResult.model;
           res = controller.run('afterOpFunction', {
             ...opFuncProps,
             docModel: res
@@ -170,7 +171,9 @@ export function OperationPlugin() {
         if (!opMap.has(opType)) throw new Error(`opType:${opType} not exist!`);
         const opFunc = opMap.get(opType);
         newDocModel = controller.run('beforeOpFunction', ctx);
-        newDocModel = opFunc({ ...ctx, docModel: newDocModel });
+        const opResult = opFunc({ ...ctx, docModel: newDocModel });
+        debugger
+        newDocModel = opResult.model;
         newDocModel = controller.run('afterOpFunction', {
           ...ctx,
           docModel: newDocModel

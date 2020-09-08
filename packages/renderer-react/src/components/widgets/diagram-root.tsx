@@ -16,11 +16,11 @@ const Root = styled.div`
 `;
 const TabsContainer = styled.div`
   width: 100%;
-  //height: 100%;
+  height: 100%;
   //overflow: auto;
   flex-grow: 1;
   background: ${props => props.theme.background};
-  position: relative;
+  // position: relative;
 `;
 
 export function DiagramRoot(props) {
@@ -50,73 +50,78 @@ export function DiagramRoot(props) {
   const model = docModel.currentSheetModel;
 
   const sheetModels = docModel.sheetModels.toArray();
-  let i = 0;
-  const tabClassName = 'react-tabs__tab';
-  const tabProps = {
-    className: tabClassName,
-    tabIndex: '-1'
-  };
-  const tabs = sheetModels.map(model => {
-    const index = i++;
-    const nProps = { ...props, model, index };
-    return (
-      <Tab key={index} {...tabProps}>
-        <SheetTitle {...nProps} />
-      </Tab>
-    );
-  });
-  tabs.push(
-    <Tab key={i++} {...tabProps}>
-      <Icon onClick={onClickAddSheet} icon={IconNames.PLUS} />
-    </Tab>
-  );
-  i = 0;
+  // let i = 0;
+  // const tabClassName = 'react-tabs__tab';
+  // const tabProps = {
+  //   className: tabClassName,
+  //   tabIndex: '-1'
+  // };
+  // const tabs = sheetModels.map(model => {
+  //   const index = i++;
+  //   const nProps = { ...props, model, index };
+  //   return (
+  //     <Tab key={index} {...tabProps}>
+  //       <SheetTitle {...nProps} />
+  //     </Tab>
+  //   );
+  // });
+  // tabs.push(
+  //   <Tab key={i++} {...tabProps}>
+  //     <Icon onClick={onClickAddSheet} icon={IconNames.PLUS} />
+  //   </Tab>
+  // );
+  // i = 0;
 
   // const tabPanelProps = {
   //   className: 'tab-panel react-tabs__tab-panel'
   // };
-  const tabPanelProps = {
-    className: multiSheetModel?'tab-panel':'single-tab-panel',
-    selectedClassName: 'tab-panel__selected'
-  };
-  const tabPanels = sheetModels.map(model => {
-    return (
-      <TabPanel key={i++} {...tabPanelProps} multiSheetModel>
-        <Theme theme={model.config.theme}>
-          {controller.run('renderSheet', {
-            ...props,
-            model
-          })}
-        </Theme>
-      </TabPanel>
-    );
-  });
-  tabPanels.push(<TabPanel key={i++} {...tabPanelProps} />);
-  const tabsProps = {
-    className: 'bm-sheet-tabs react-tabs react-tabs__tabs',
-    selectedIndex: docModel.currentSheetIndex,
-    forceRenderTabPanel: true,
-    onSelect
-  };
-  const child = (
-    <TabsContainer>
-      <Tabs {...tabsProps} >
-        {tabPanels}
-        {
-          multiSheetModel &&
-          <TabList className="tab-list">{tabs}</TabList>
-        }
-        
-      </Tabs>
-    </TabsContainer>
-  );
+  // const tabPanelProps = {
+  //   className: multiSheetModel?'tab-panel':'single-tab-panel',
+  //   selectedClassName: 'tab-panel__selected'
+  // };
+  // const tabPanels = sheetModels.map(model => {
+  //   return (
+  //     <TabPanel key={i++} {...tabPanelProps}>
+  //       <Theme theme={model.config.theme}>
+  //         {controller.run('renderSheet', {
+  //           ...props,
+  //           model
+  //         })}
+  //       </Theme>
+  //     </TabPanel>
+  //   );
+  // });
+  // tabPanels.push(<TabPanel key={i++} {...tabPanelProps} />);
+  // const tabsProps = {
+  //   className: 'bm-sheet-tabs react-tabs react-tabs__tabs',
+  //   selectedIndex: docModel.currentSheetIndex,
+  //   forceRenderTabPanel: true,
+  //   onSelect
+  // };
+  // const child = (
+  //   <TabsContainer>
+  //     <Tabs {...tabsProps} >
+  //       {tabPanels}
+  //       {
+  //         multiSheetModel &&
+  //         <TabList className="tab-list">{tabs}</TabList>
+  //       }
+  //
+  //     </Tabs>
+  //   </TabsContainer>
+  // );
 
   return (
     <Root onCopy={onCopy}>
       {/*<GlobalStyle />*/}
       {controller.run('renderToolbar', { ...props, model })}
       {controller.run('renderDiagramCustomize', props)}
-      {child}
+      <Theme theme={model.config.theme}>
+        {controller.run('renderSheet', {
+          ...props,
+          model
+        })}
+      </Theme>
     </Root>
   );
 }

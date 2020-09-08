@@ -1,7 +1,7 @@
 import debug from 'debug';
 import htmlToText from 'html-to-text';
-import { List } from 'immutable';
-import { ThemeType } from '../configs/theme';
+import {List} from 'immutable';
+import {ThemeType} from '../configs/theme';
 import {
   BlockType,
   DiagramLayoutType,
@@ -9,12 +9,12 @@ import {
   KeyType,
   TopicRelationship
 } from '../types';
-import { createKey } from '../utils';
-import { Block } from './block';
-import { Config, ConfigRecordType } from './config';
-import { DescBlockData } from './desc-block-data';
-import { SheetModel } from './sheet-model';
-import { Topic } from './topic';
+import {createKey} from '../utils';
+import {Block} from './block';
+import {Config, ConfigRecordType} from './config';
+import {DescBlockData} from './desc-block-data';
+import {SheetModel} from './sheet-model';
+import {Topic} from './topic';
 import {
   getAllSubTopicKeys,
   getKeyPath,
@@ -39,6 +39,7 @@ export type BaseSheetModelModifierArg = {
   model: SheetModel;
   topicKey?: KeyType;
   topicKeys?: Array<KeyType>;
+  topic?: Topic;
 };
 
 type SetTopicArg = BaseSheetModelModifierArg & {
@@ -79,12 +80,12 @@ type SetConfigArg = BaseSheetModelModifierArg & {
   config: Partial<ConfigRecordType>;
 };
 
-export type SheetModelModifierResult = SheetModel;
+export type SheetModelModifierResult = BaseSheetModelModifierArg;
 
 function toggleCollapse({
-  model,
-  topicKey
-}: BaseSheetModelModifierArg): SheetModelModifierResult {
+                          model,
+                          topicKey
+                        }: BaseSheetModelModifierArg): SheetModelModifierResult {
   let topic = model.getTopic(topicKey);
   if (topic && topic.subKeys.size !== 0) {
     topic = topic.merge({
@@ -95,13 +96,18 @@ function toggleCollapse({
       collapse => !collapse
     );
   }
-  model = focusTopic({ model, topicKey, focusMode: FocusMode.NORMAL });
-  return model;
+  const result = focusTopic({model, topicKey, focusMode: FocusMode.NORMAL});
+  return {
+    model: result.model,
+    topicKey: topicKey,
+    topicKeys:[],
+    topic: topic,
+  };
 }
 
 function collapseAll({
-  model
-}: BaseSheetModelModifierArg): SheetModelModifierResult {
+                       model
+                     }: BaseSheetModelModifierArg): SheetModelModifierResult {
   const topicKeys = getAllSubTopicKeys(model, model.editorRootTopicKey);
   log(model);
   model = model.withMutations(m => {
@@ -109,17 +115,22 @@ function collapseAll({
       m.setIn(['topics', topicKey, 'collapse'], true);
     });
   });
-  model = focusTopic({
+  const result = focusTopic({
     model,
     topicKey: model.editorRootTopicKey,
     focusMode: FocusMode.NORMAL
   });
-  return model;
+  return {
+    model: result.model,
+    topicKey: model.editorRootTopicKey,
+    topicKeys:[],
+    topic: null,
+  };
 }
 
 function expandAll({
-  model
-}: BaseSheetModelModifierArg): SheetModelModifierResult {
+                     model
+                   }: BaseSheetModelModifierArg): SheetModelModifierResult {
   const topicKeys = getAllSubTopicKeys(model, model.editorRootTopicKey);
   log(model);
   model = model.withMutations(m => {
@@ -128,13 +139,18 @@ function expandAll({
     });
   });
   log(model);
-  return model;
+  return {
+    model: model,
+    topicKey: model.editorRootTopicKey,
+    topicKeys:[],
+    topic: null,
+  };
 }
 
 function expandTo({
-  model,
-  topicKey
-}: BaseSheetModelModifierArg): SheetModelModifierResult {
+                    model,
+                    topicKey
+                  }: BaseSheetModelModifierArg): SheetModelModifierResult {
   const keys = getKeyPath(model, topicKey).filter(t => t !== topicKey);
   model = model.withMutations(m => {
     keys.forEach(topicKey => {
@@ -148,14 +164,19 @@ function expandTo({
   ) {
     model = model.set('editorRootTopicKey', model.rootTopicKey);
   }
-  return model;
+  return {
+    model: model,
+    topicKey: topicKey,
+    topicKeys:[],
+    topic: null,
+  };
 }
 
 function focusTopic({
-  model,
-  topicKey,
-  focusMode = FocusMode.NORMAL
-}: SetFocusModeArg): SheetModelModifierResult {
+                      model,
+                      topicKey,
+                      focusMode = FocusMode.NORMAL
+                    }: SetFocusModeArg):SheetModelModifierResult {
   log('focus topic', focusMode);
   if (!model.topics.has(topicKey)) {
     throw new Error(`focus key ${topicKey} is not in model`);
@@ -164,31 +185,43 @@ function focusTopic({
   // if (focusMode !== model.focusMode) model = model.set('focusMode', focusMode);
   model = model.set('focusMode', focusMode);
   if (model.selectedKeys != null) model = model.set('selectedKeys', null);
-  return model;
+  return {
+    model: model,
+    topicKey: topicKey,
+    topicKeys:[],
+    topic: null,
+  };
 }
 
 function setFocusMode({
-  model,
-  focusMode
-}: SetFocusModeArg): SheetModelModifierResult {
+                        model,
+                        focusMode
+                      }: SetFocusModeArg): SheetModelModifierResult {
   log('setFocusMode');
   // SHOW_POPUP一定要重新设置, 因为可能dialogType 改变了
   if (focusMode !== model.focusMode || focusMode === FocusMode.SHOW_POPUP)
     model = model.set('focusMode', focusMode);
-  return model;
+  return {
+    model: model,
+    topicKey: null,
+    topicKeys:[],
+    topic: null,
+  };
 }
 
 function addChild({
-  model,
-  topicKey,
-  addAtFront = false
-}: BaseSheetModelModifierArg & {
+                    model,
+                    topicKey,
+                    addAtFront = false
+                  }: BaseSheetModelModifierArg & {
   addAtFront: boolean;
 }): SheetModelModifierResult {
   log('addChild:', topicKey);
   let topic = model.getTopic(topicKey);
+  let newTopic;
   if (topic) {
-    const child = Topic.create({ key: createKey(), parentKey: topic.key });
+    const child = Topic.create({key: createKey(), parentKey: topic.key});
+    newTopic = child;
     topic = topic
       .set('collapse', false)
       .update('subKeys', subKeys =>
@@ -197,23 +230,39 @@ function addChild({
     model = model.update('topics', topics =>
       topics.set(topicKey, topic).set(child.key, child)
     );
-    return focusTopic({
+    focusTopic({
       model,
       topicKey: child.key,
       focusMode: FocusMode.EDITING_CONTENT
     });
+    return {
+      model: model,
+      topicKey: newTopic.key,
+      topicKeys:[],
+      topic: newTopic,
+    };
   }
-  return model;
+  return {
+    model: model,
+    topicKey:null,
+    topicKeys:[],
+    topic: null,
+  };
 }
 
 function addSibling({
-  model,
-  topicKey,
-  content
-}: BaseSheetModelModifierArg & {
+                      model,
+                      topicKey,
+                      content
+                    }: BaseSheetModelModifierArg & {
   content?: string;
 }): SheetModelModifierResult {
-  if (topicKey === model.rootTopicKey) return model;
+  if (topicKey === model.rootTopicKey) return {
+    model: model,
+    topicKey: topicKey,
+    topicKeys:null,
+    topic: null,
+  };
   const topic = model.getTopic(topicKey);
   if (topic) {
     const pItem = model.getTopic(topic.parentKey);
@@ -228,30 +277,46 @@ function addSibling({
       .updateIn(['topics', pItem.key, 'subKeys'], subKeys =>
         subKeys.insert(idx + 1, sibling.key)
       );
-    return focusTopic({
+    focusTopic({
       model,
       topicKey: sibling.key,
       focusMode: FocusMode.EDITING_CONTENT
     });
+    return {
+      model: model,
+      topicKey: topicKey,
+      topicKeys:null,
+      topic: sibling,
+    };
   }
-  return model;
+  return {
+    model: model,
+    topicKey: topicKey,
+    topicKeys:null,
+    topic: null,
+  };
 }
 
 function topicContentToPlainText({
-  model,
-  topicKey
-}: BaseSheetModelModifierArg): SheetModelModifierResult {
+                                   model,
+                                   topicKey
+                                 }: BaseSheetModelModifierArg): SheetModelModifierResult {
   const content = model.getTopic(topicKey).getBlock(BlockType.CONTENT).block
     .data;
-  const data = htmlToText.fromString(content, { preserveNewlines: true });
-  return setTopicBlockContentData({ model, topicKey, data });
+  const data = htmlToText.fromString(content, {preserveNewlines: true});
+  return setTopicBlockContentData({model, topicKey, data});
 }
 
 function deleteTopic({
-  model,
-  topicKey
-}: BaseSheetModelModifierArg): SheetModelModifierResult {
-  if (topicKey === model.editorRootTopicKey) return model;
+                       model,
+                       topicKey
+                     }: BaseSheetModelModifierArg): SheetModelModifierResult {
+  if (topicKey === model.editorRootTopicKey)    return {
+    model: model,
+    topicKey: topicKey,
+    topicKeys:null,
+    topic: null,
+  };;
   const item = model.getTopic(topicKey);
   if (item) {
     model = model.withMutations(m => {
@@ -274,17 +339,32 @@ function deleteTopic({
           FocusMode.EDITING_CONTENT
         );
     });
+    return {
+      model: model,
+      topicKey: topicKey,
+      topicKeys:[],
+      topic: null,
+    };
   }
-
-  return model;
+  return {
+    model: model,
+    topicKey: null,
+    topicKeys:[],
+    topic: null,
+  };
 }
 
-function deleteTopics({ model, topicKeys }): SheetModelModifierResult {
+function deleteTopics({model, topicKeys}): SheetModelModifierResult {
   if (topicKeys == null) topicKeys = model.focusOrSelectedKeys;
   topicKeys.forEach(topicKey => {
-    model = deleteTopic({ model, topicKey });
+    model = deleteTopic({model, topicKey});
   });
-  return model;
+  return {
+    model: model,
+    topicKey: null,
+    topicKeys:topicKeys,
+    topic: null,
+  };
 }
 
 /**
@@ -296,15 +376,15 @@ function deleteTopics({ model, topicKeys }): SheetModelModifierResult {
  * @param data
  */
 function setTopicBlockData({
-  model,
-  topicKey,
-  blockType,
-  focusMode,
-  data
-}: setTopicBlockDataArg): SheetModelModifierResult {
+                             model,
+                             topicKey,
+                             blockType,
+                             focusMode,
+                             data
+                           }: setTopicBlockDataArg): SheetModelModifierResult {
   const topic = model.getTopic(topicKey);
   if (topic) {
-    const { index, block } = topic.getBlock(blockType);
+    const {index, block} = topic.getBlock(blockType);
     if (index === -1) {
       model = model.updateIn(['topics', topicKey, 'blocks'], blocks =>
         blocks.push(
@@ -323,22 +403,28 @@ function setTopicBlockData({
       }
     }
     if (focusMode) {
-      model = focusTopic({
+      const result  = focusTopic({
         model,
         topicKey,
         focusMode
       });
+      model = result.model;
     }
   }
-  return model;
+  return {
+    model: model,
+    topicKey:  topicKey,
+    topicKeys:null,
+    topic:  topic,
+  };
 }
 
 function setTopicBlockContentData({
-  model,
-  topicKey,
-  focusMode = null,
-  data
-}): SheetModelModifierResult {
+                                    model,
+                                    topicKey,
+                                    focusMode = null,
+                                    data
+                                  }): SheetModelModifierResult {
   return setTopicBlockData({
     model,
     topicKey,
@@ -348,117 +434,165 @@ function setTopicBlockContentData({
   });
 }
 
-function deleteTopicBlock({ model, topicKey, blockType }: DeleteTopicBlockArg) {
+function deleteTopicBlock({model, topicKey, blockType}: DeleteTopicBlockArg): SheetModelModifierResult  {
   const topic = model.getTopic(topicKey);
   if (topic) {
-    const { index } = topic.getBlock(blockType);
+    const {index} = topic.getBlock(blockType);
     if (index !== -1) {
       model = model.updateIn(['topics', topicKey, 'blocks'], blocks =>
         blocks.delete(index)
       );
     }
-    model = setFocusMode({
+    const result  = setFocusMode({
       model,
       focusMode: FocusMode.NORMAL
     });
+    model = result.model;
   }
-  return model;
+  return {
+    model: model,
+    topicKey:  topicKey,
+    topic:  topic,
+  };
 }
 
-function deleteTopicBlockDesc({ model, topicKey }: BaseSheetModelModifierArg) {
-  return deleteTopicBlock({ model, topicKey, blockType: BlockType.DESC });
+function deleteTopicBlockDesc({model, topicKey}: BaseSheetModelModifierArg) {
+  return deleteTopicBlock({model, topicKey, blockType: BlockType.DESC});
 }
 
 function setStyle({
-  model,
-  topicKey,
-  style
-}: SetTopicStyleArg): SheetModelModifierResult {
+                    model,
+                    topicKey,
+                    style
+                  }: SetTopicStyleArg): SheetModelModifierResult {
   const topic = model.getTopic(topicKey);
   if (topic) {
     if (style !== topic.style) {
       model = model.updateIn(['topics', topicKey, 'style'], s => style);
     }
   }
-  return model;
+  return {
+    model: model,
+    topicKey:  topicKey,
+    topicKeys:null,
+    topic:  topic,
+  };
 }
 
 function clearAllCustomStyle({
-  model
-}: BaseSheetModelModifierArg): SheetModelModifierResult {
+                               model
+                             }: BaseSheetModelModifierArg): SheetModelModifierResult {
   model = model.withMutations(model => {
     model.topics.keySeq().forEach(key => {
       model.setIn(['topics', key, 'style'], null);
     });
   });
-  return model;
+  return {
+    model: model,
+    topicKey:  null,
+    topicKeys:null,
+    topic:  null,
+  };
 }
 
-function setTheme({ model, theme }: SetThemeArg): SheetModelModifierResult {
+function setTheme({model, theme}: SetThemeArg): SheetModelModifierResult {
   model = model.setIn(['config', 'theme'], theme);
-  return model;
+  return {
+    model: model,
+    topicKey:  null,
+    topicKeys:[],
+    topic:  null,
+  };
 }
 
 function setLayoutDir({
-  model,
-  layoutDir
-}: SetLayoutDirArg): SheetModelModifierResult {
-  if (model.config.layoutDir === layoutDir) return model;
+                        model,
+                        layoutDir
+                      }: SetLayoutDirArg): SheetModelModifierResult {
+  if (model.config.layoutDir === layoutDir)  return {
+    model: model,
+    topicKey:  null,
+    topicKeys:null,
+    topic:  null,
+  };
   model = model.setIn(['config', 'layoutDir'], layoutDir);
-  return model;
+  return {
+    model: model,
+    topicKey:  null,
+    topicKeys:null,
+    topic:  null,
+  };
 }
 
-function setConfig({ model, config }: SetConfigArg) {
+function setConfig({model, config}: SetConfigArg) {
   return model.set('config', model.config.merge(config));
 }
 
 function setEditorRootTopicKey({
-  model,
-  topicKey
-}: BaseSheetModelModifierArg): SheetModelModifierResult {
+                                 model,
+                                 topicKey
+                               }: BaseSheetModelModifierArg): SheetModelModifierResult {
   if (model.editorRootTopicKey !== topicKey)
     model = model.set('editorRootTopicKey', topicKey);
   if (model.getTopic(topicKey).collapse)
     model = model.setIn(['topics', topicKey, 'collapse'], false);
-  return model;
+  return {
+    model: model,
+    topicKey:  null,
+    topicKeys:null,
+    topic:  null,
+  };
 }
 
 function setZoomFactor({
-  model,
-  zoomFactor
-}: SetZoomFactorArg): SheetModelModifierResult {
+                         model,
+                         zoomFactor
+                       }: SetZoomFactorArg): SheetModelModifierResult {
   if (model.zoomFactor !== zoomFactor)
     model = model.set('zoomFactor', zoomFactor);
-  return model;
+  return {
+    model: model,
+    topicKey:  null,
+    topicKeys:null,
+    topic:  null,
+  };
 }
 
-function startEditingContent({ model, topicKey }: BaseSheetModelModifierArg) {
+function startEditingContent({model, topicKey}: BaseSheetModelModifierArg) {
   return focusTopic({
     model,
     topicKey,
     focusMode: FocusMode.EDITING_CONTENT
   });
 }
-function startEditingDesc({ model, topicKey }: BaseSheetModelModifierArg) {
+
+function startEditingDesc({model, topicKey}: BaseSheetModelModifierArg) {
   const topic = model.getTopic(topicKey);
   const desc = topic.getBlock(BlockType.DESC);
   if (desc.block == null || desc.block.data == null) {
-    model = SheetModelModifier.setTopicBlockData({
+    const result = SheetModelModifier.setTopicBlockData({
       model,
       topicKey,
       blockType: BlockType.DESC,
-      data: new DescBlockData({ kind: 'html', data: '', collapse: false })
+      data: new DescBlockData({kind: 'html', data: '', collapse: false})
     });
+    model = result.model;
   }
-  model = SheetModelModifier.focusTopic({
+  const result = SheetModelModifier.focusTopic({
     model,
     topicKey,
     focusMode: FocusMode.EDITING_DESC
   });
-  return model;
+  model = result.model;
+  return {
+    model: model,
+    topicKey:  topicKey,
+    topicKeys:null,
+    topic:  topic,
+  };
 }
 
-function dragAndDrop({ model, srcKey, dstKey, dropDir }) {
+function dragAndDrop({model, srcKey, dstKey, dropDir}) {
   const srcTopic = model.getTopic(srcKey);
   const dstTopic = model.getTopic(dstKey);
 
@@ -520,9 +654,9 @@ function dragAndDrop({ model, srcKey, dstKey, dropDir }) {
 }
 
 function swapUp({
-  model,
-  topicKeys
-}: BaseSheetModelModifierArg): SheetModelModifierResult {
+                  model,
+                  topicKeys
+                }: BaseSheetModelModifierArg): SheetModelModifierResult {
   if (topicKeys == null) topicKeys = model.focusOrSelectedKeys;
   const firstKey = topicKeys[0];
   const parent = model.getParentTopic(firstKey);
@@ -531,7 +665,11 @@ function swapUp({
   for (const itemKey of topicKeys) {
     const idx = parent.subKeys.indexOf(itemKey);
     // 如果topicKeys不是sibling 关系
-    if (idx === -1) return model;
+    if (idx === -1)  return {
+      model: model,
+      topicKeys:  topicKeys,
+      topic:  null,
+    };
     idxArray.push(idx);
   }
   // 对序号进行排序
@@ -539,7 +677,11 @@ function swapUp({
 
   const firstIdx = idxArray[0];
   if (firstIdx === 0) {
-    return model;
+    return {
+      model: model,
+      topicKeys:  topicKeys,
+      topic:  null,
+    };
   } else {
     const sortedItemKeys = idxArray.map(idx => parent.subKeys.get(idx));
     model = model.updateIn(['topics', parent.key, 'subKeys'], subKeys =>
@@ -548,13 +690,17 @@ function swapUp({
         .splice(idxArray[0] - 1, 0, ...sortedItemKeys)
     );
   }
-  return model;
+  return {
+    model: model,
+    topicKeys:  topicKeys,
+    topic:  null,
+  };
 }
 
 function swapDown({
-  model,
-  topicKeys
-}: BaseSheetModelModifierArg): SheetModelModifierResult {
+                    model,
+                    topicKeys
+                  }: BaseSheetModelModifierArg): SheetModelModifierResult {
   if (topicKeys == null) topicKeys = model.focusOrSelectedKeys;
   const firstKey = topicKeys[0];
   const parent = model.getParentTopic(firstKey);
@@ -562,14 +708,22 @@ function swapDown({
 
   for (const itemKey of topicKeys) {
     const idx = parent.subKeys.indexOf(itemKey);
-    if (idx === -1) return model;
+    if (idx === -1) return {
+      model: model,
+      topicKeys:  topicKeys,
+      topic:  null,
+    };
     idxArray.push(idx);
   }
   idxArray.sort((a, b) => a - b);
 
   const lastIdx = idxArray[idxArray.length - 1];
   if (lastIdx === parent.subKeys.size - 1) {
-    return model;
+     return {
+      model: model,
+      topicKeys:  topicKeys,
+      topic:  null,
+    };
   } else {
     const sortedItemKeys = idxArray.map(idx => parent.subKeys.get(idx));
     model = model.updateIn(['topics', parent.key, 'subKeys'], subKeys =>
@@ -578,15 +732,19 @@ function swapDown({
         .splice(idxArray[0] + 1, 0, ...sortedItemKeys)
     );
   }
-  return model;
+  return {
+    model: model,
+    topicKeys:  topicKeys,
+    topic:  null,
+  };
 }
 
 function addMultiSibling({
-  model,
-  topicKey,
-  contentArray,
-  topicArray
-}: BaseSheetModelModifierArg & {
+                           model,
+                           topicKey,
+                           contentArray,
+                           topicArray
+                         }: BaseSheetModelModifierArg & {
   contentArray?: string[];
   topicArray?: Array<Topic>;
 }) {
@@ -611,23 +769,28 @@ function addMultiSibling({
         subKeys.splice(idx + 1, 0, ...siblingsKeys)
       );
     });
-    model = focusTopic({
+    const result = focusTopic({
       model,
       topicKey: siblingsKeys[siblingsKeys.length - 1],
       focusMode: FocusMode.EDITING_CONTENT
     });
+    model = result.model;
   } else if (topicArray) {
   }
-  return model;
+  return {
+    model: model,
+    topicKeys:  topicKey,
+    topic:  null,
+  };
 }
 
 function addMultiChild({
-  model,
-  topicKey,
-  addAtFront = false,
-  contentArray,
-  topicArray
-}: BaseSheetModelModifierArg & {
+                         model,
+                         topicKey,
+                         addAtFront = false,
+                         contentArray,
+                         topicArray
+                       }: BaseSheetModelModifierArg & {
   addAtFront?: boolean;
   contentArray?: string[];
   topicArray?: Array<Topic>;
@@ -653,15 +816,19 @@ function addMultiChild({
       addAtFront ? subKeys.unshift(...childKeys) : subKeys.push(...childKeys)
     );
   });
-  model = focusTopic({
+  const result = focusTopic({
     model,
     topicKey: childKeys[childKeys.length - 1],
     focusMode: FocusMode.EDITING_CONTENT
   });
-  return model;
+  return {
+    model: result.model,
+    topicKeys:  topicKey,
+    topic:  null,
+  };
 }
 
-function addMultiTopics({ model, topics }) {
+function addMultiTopics({model, topics}) {
   model = model.withMutations(model => {
     topics.forEach(topic => {
       model.update('topics', topics_ => topics_.set(topic.key, topic));

@@ -100,7 +100,7 @@ export class Controller {
     try {
       const { middleware } = this;
       const fns = middleware[key] || [];
-      warning(fns.length !== 0, `the middleware function ${key} is not found!`);
+      // warning(fns.length !== 0, `the middleware function ${key} is not found!`);
       const composedFn = memoizeOne(compose)(fns);
       // @ts-ignore
       return composedFn(arg);

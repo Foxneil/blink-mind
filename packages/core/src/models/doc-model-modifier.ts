@@ -33,10 +33,14 @@ export function setCurrentSheetModel(
 export function toDocModelModifierFunc(sheetModelModifierFunc) {
   return arg => {
     const { docModel, ...rest } = arg;
-    return setCurrentSheetModel(
+    debugger
+     const result =  sheetModelModifierFunc({ ...rest, model: docModel.currentSheetModel });
+     const model =   setCurrentSheetModel(
       docModel,
-      sheetModelModifierFunc({ ...rest, model: docModel.currentSheetModel })
+         result.model
     );
+    result.model = model;
+    return result;
   };
 }
 
@@ -132,7 +136,7 @@ function addMultiChildWithExtData({
       addAtFront,
       contentArray,
       topicArray
-    })
+    }).model
   );
   if (extData) docModel = docModel.set('extData', extData);
   return docModel;

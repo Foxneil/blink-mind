@@ -57,25 +57,25 @@ const items: TopicContextMenuItemConfig[] = [
     rootCanUse: false,
     opType: OpType.SWAP_DOWN
   },
-  {
-    icon: 'notes',
-    label: I18nKey.EDIT_NOTES,
-    shortcut: ['Alt', 'D'],
-    rootCanUse: true,
-    opType: OpType.START_EDITING_DESC
-  },
+  // {
+  //   icon: 'notes',
+  //   label: I18nKey.EDIT_NOTES,
+  //   shortcut: ['Alt', 'D'],
+  //   rootCanUse: true,
+  //   opType: OpType.START_EDITING_DESC
+  // },
   {
     icon: 'trash',
     enabledFunc: ({ topic }) => {
       return topic.getBlock(BlockType.DESC).block != null;
     },
-    label: I18nKey.REMOVE_NOTES,
-    shortcut: ['Alt', 'Shift', 'D'],
-    rootCanUse: true,
-    opType: OpType.DELETE_TOPIC_BLOCK,
-    opArg: {
-      blockType: BlockType.DESC
-    }
+    // label: I18nKey.REMOVE_NOTES,
+    // shortcut: ['Alt', 'Shift', 'D'],
+    // rootCanUse: true,
+    // opType: OpType.DELETE_TOPIC_BLOCK,
+    // opArg: {
+    //   blockType: BlockType.DESC
+    // }
   },
   {
     icon: 'delete-node',
@@ -89,11 +89,11 @@ const items: TopicContextMenuItemConfig[] = [
     shortcut: ['Alt', 'F'],
     opType: OpType.SET_EDITOR_ROOT
   },
-  {
-    icon: 'convert',
-    label: I18nKey.CONVERT_TO_PLAIN_TEXT,
-    opType: OpType.TOPIC_CONTENT_TO_PLAIN_TEXT
-  }
+  // {
+  //   icon: 'convert',
+  //   label: I18nKey.CONVERT_TO_PLAIN_TEXT,
+  //   opType: OpType.TOPIC_CONTENT_TO_PLAIN_TEXT
+  // }
 ];
 
 export function ContextMenuPlugin() {

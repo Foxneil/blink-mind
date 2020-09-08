@@ -15,11 +15,11 @@ export function ReactPlugin(options = {}) {
     UtilsPlugin(),
     PastePlugin(),
     ContextMenuPlugin(),
-    RightTopPanelPlugin(),
-    ToolbarPlugin(),
+    // RightTopPanelPlugin(),
+    // ToolbarPlugin(),
     DragAndDropPlugin(),
-    SheetPlugin(),
+    // SheetPlugin(),
     LinkLinePlugin(),
-    DialogPlugin()
+    // DialogPlugin()
   ];
 }
