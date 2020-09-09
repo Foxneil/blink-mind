@@ -22,8 +22,8 @@
     "react-dom": "^16.10.2"
   },
   "dependencies": {
-    "@stayfocus/core": "^0.0.15",
-    "@stayfocus/icons": "^0.0.15",
+    "@stayfocus/core": "^0.0.16",
+    "@stayfocus/icons": "^0.0.16",
     "@blueprintjs/core": "^3.19.1",
     "@blueprintjs/icons": "^3.13.0",
     "@blueprintjs/select": "^3.11.1",
