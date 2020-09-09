@@ -70,12 +70,11 @@ export function DragAndDropPlugin() {
       log('handleTopicDragStart');
       const { controller, ev } = props;
       ev.stopPropagation();
-      // controller.run('operation', {
-      //   ...props,
-      //   opType: OpType.FOCUS_TOPIC,
-      //   focusMode: FocusMode.DRAGGING
-      // });
-
+      controller.run('operation', {
+        ...props,
+        opType: OpType.FOCUS_TOPIC,
+        focusMode: FocusMode.DRAGGING
+      });
       controller.run('operation', {
         ...props,
         opType: OpType.DRAG_AND_DROP_BEGIN
