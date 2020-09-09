@@ -70,15 +70,25 @@ export function DragAndDropPlugin() {
       log('handleTopicDragStart');
       const { controller, ev } = props;
       ev.stopPropagation();
-      controller.run('operation', {
-        ...props,
-        opType: OpType.FOCUS_TOPIC,
-        focusMode: FocusMode.DRAGGING
-      });
+      // controller.run('operation', {
+      //   ...props,
+      //   opType: OpType.FOCUS_TOPIC,
+      //   focusMode: FocusMode.DRAGGING
+      // });
 
       controller.run('operation', {
         ...props,
         opType: OpType.DRAG_AND_DROP_BEGIN
+      });
+    },
+
+    handleTopicDragEnd(props) {
+      log('handleTopicDragEnd');
+      const { controller, ev } = props;
+      ev.stopPropagation();
+      controller.run('operation', {
+        ...props,
+        opType: OpType.DRAG_AND_DROP_END
       });
     },
 
@@ -129,10 +139,6 @@ export function DragAndDropPlugin() {
       const relatedTarget = ev.nativeEvent.relatedTarget;
       log('handleTopicDragLeave:', topicKey, dropDir);
       const content = getRef(contentRefKey(topicKey));
-      controller.run('operation', {
-        ...props,
-        opType: OpType.DRAG_AND_DROP_BEGIN
-      });
       if (content == relatedTarget || content.contains(relatedTarget)) {
         return;
       }
@@ -153,10 +159,6 @@ export function DragAndDropPlugin() {
           opType: OpType.DRAG_AND_DROP
         });
       }
-      controller.run('operation', {
-        ...props,
-        opType: OpType.DRAG_AND_DROP
-      });
     }
   };
 }

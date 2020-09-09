@@ -94,6 +94,10 @@ export class TopicNodeWidget extends BaseWidget<Props, State> {
     this.run('handleTopicPaste', { ...this.props, ev });
   };
 
+  onDragEnd = ev => {
+    log('onDragEnd');
+    this.run('handleTopicDragEnd', { ...this.props, ev });
+  };
   public renderContextMenu() {
     const { controller } = this.props;
     if (
@@ -240,7 +244,8 @@ export class TopicNodeWidget extends BaseWidget<Props, State> {
       onDragLeave: this.onDragLeave,
       onDragOver: this.onDragOver,
       onDrop: this.onDrop,
-      onPaste: this.onPaste
+      onPaste: this.onPaste,
+      onDragEnd:this.onDragEnd
     };
     // log(topicKey, 'style', topicStyle);
     return (
