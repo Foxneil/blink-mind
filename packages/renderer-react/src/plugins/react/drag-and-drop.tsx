@@ -75,6 +75,11 @@ export function DragAndDropPlugin() {
         opType: OpType.FOCUS_TOPIC,
         focusMode: FocusMode.DRAGGING
       });
+
+      controller.run('operation', {
+        ...props,
+        opType: OpType.DRAG_AND_DROP_BEGIN
+      });
     },
 
     canDrop(props) {
@@ -118,14 +123,21 @@ export function DragAndDropPlugin() {
         getRef,
         ev,
         diagramState,
+        controller,
         setDiagramState
       } = props;
+      debugger
       const relatedTarget = ev.nativeEvent.relatedTarget;
       log('handleTopicDragLeave:', topicKey, dropDir);
       const content = getRef(contentRefKey(topicKey));
+      controller.run('operation', {
+        ...props,
+        opType: OpType.DRAG_AND_DROP_BEGIN
+      });
       if (content == relatedTarget || content.contains(relatedTarget)) {
         return;
       }
+
       setDiagramState({ dragDrop: null });
     },
 
@@ -142,6 +154,10 @@ export function DragAndDropPlugin() {
           opType: OpType.DRAG_AND_DROP
         });
       }
+      controller.run('operation', {
+        ...props,
+        opType: OpType.DRAG_AND_DROP_END
+      });
     }
   };
 }

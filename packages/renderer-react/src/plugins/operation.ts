@@ -35,7 +35,9 @@ export function OperationPlugin() {
     setEditorRootTopicKey,
     startEditingContent,
     startEditingDesc,
+    dragAndDropBegin,
     dragAndDrop,
+    dragAndDropEnd,
     swapUp,
     swapDown
   } = DocModelModifier;
@@ -71,6 +73,8 @@ export function OperationPlugin() {
     [OpType.START_EDITING_CONTENT, startEditingContent],
     [OpType.START_EDITING_DESC, startEditingDesc],
     [OpType.DRAG_AND_DROP, dragAndDrop],
+    [OpType.DRAG_AND_DROP_BEGIN, dragAndDropBegin],
+    [OpType.DRAG_AND_DROP_END, dragAndDropEnd],
     [OpType.SET_EDITOR_ROOT, setEditorRootTopicKey],
     [OpType.SET_LAYOUT_DIR, setLayoutDir],
     [OpType.SWAP_UP, swapUp],
@@ -197,7 +201,7 @@ export function OperationPlugin() {
       }
       controller.change(event, callback ? callback(newDocModel) : null);
       controller.run('afterOperation', ctx);
-      
+
       // log(controller.model);
     },
 

@@ -40,6 +40,9 @@ export type BaseSheetModelModifierArg = {
   topicKey?: KeyType;
   topicKeys?: Array<KeyType>;
   topic?: Topic;
+  srcKey?:  KeyType,
+  dstKey?:  KeyType,
+  dropDir?: string,
 };
 
 type SetTopicArg = BaseSheetModelModifierArg & {
@@ -230,7 +233,7 @@ function addChild({
     model = model.update('topics', topics =>
       topics.set(topicKey, topic).set(child.key, child)
     );
-    let result = focusTopic({
+    const result = focusTopic({
       model,
       topicKey: child.key,
       focusMode: FocusMode.EDITING_CONTENT
@@ -278,7 +281,7 @@ function addSibling({
       .updateIn(['topics', pItem.key, 'subKeys'], subKeys =>
         subKeys.insert(idx + 1, sibling.key)
       );
-    let result = focusTopic({
+    const result = focusTopic({
       model,
       topicKey: sibling.key,
       focusMode: FocusMode.EDITING_CONTENT
@@ -359,7 +362,7 @@ function deleteTopic({
 function deleteTopics({model, topicKeys}): SheetModelModifierResult {
   if (topicKeys == null) topicKeys = model.focusOrSelectedKeys;
   topicKeys.forEach(topicKey => {
-    let result = deleteTopic({model, topicKey});
+    const result = deleteTopic({model, topicKey});
     model = result.model;
   });
   return {
@@ -595,7 +598,16 @@ function startEditingDesc({model, topicKey}: BaseSheetModelModifierArg) {
   };
 }
 
-function dragAndDrop({model, srcKey, dstKey, dropDir}) {
+function dragAndDropBegin({model, srcKey, dstKey, dropDir}):SheetModelModifierResult {
+  return {
+    model: model,
+    srcKey:  srcKey,
+    dstKey:  dstKey,
+    dropDir:dropDir,
+  };
+}
+
+function dragAndDrop({model, srcKey, dstKey, dropDir}):SheetModelModifierResult {
   const srcTopic = model.getTopic(srcKey);
   const dstTopic = model.getTopic(dstKey);
 
@@ -653,7 +665,21 @@ function dragAndDrop({model, srcKey, dstKey, dropDir}) {
       });
     }
   }
-  return model;
+  return {
+    model: model,
+    srcKey:  srcKey,
+    dstKey:  dstKey,
+    dropDir:dropDir,
+  };
+}
+
+function dragAndDropEnd({model, srcKey, dstKey, dropDir}):SheetModelModifierResult {
+  return {
+    model: model,
+    srcKey:  srcKey,
+    dstKey:  dstKey,
+    dropDir:dropDir,
+  };
 }
 
 function swapUp({
@@ -868,6 +894,8 @@ export const SheetModelModifier = {
   startEditingContent,
   startEditingDesc,
   dragAndDrop,
+  dragAndDropBegin,
+  dragAndDropEnd,
   swapUp,
   swapDown
 };

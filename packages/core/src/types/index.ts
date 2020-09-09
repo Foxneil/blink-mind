@@ -52,7 +52,7 @@ export type ChangeEvent = {
 
 export type OnChangeFunction = (
   event: ChangeEvent,
-  
+
   callback?: ModelChangeCallback
 ) => void;
 
@@ -103,6 +103,8 @@ export const OpType = {
   START_EDITING_CONTENT: 'START_EDITING_CONTENT',
   START_EDITING_DESC: 'START_EDITING_DESC',
   DRAG_AND_DROP: 'DRAG_AND_DROP',
+  DRAG_AND_DROP_BEGIN: 'DRAG_AND_DROP_BEGIN',
+  DRAG_AND_DROP_END: 'DRAG_AND_DROP_END',
   SET_EDITOR_ROOT: 'SET_EDITOR_ROOT',
   SET_LAYOUT_DIR: 'SET_LAYOUT_DIR',
   SWAP_UP: 'SWAP_UP',
