@@ -126,7 +126,6 @@ export function DragAndDropPlugin() {
         controller,
         setDiagramState
       } = props;
-      debugger
       const relatedTarget = ev.nativeEvent.relatedTarget;
       log('handleTopicDragLeave:', topicKey, dropDir);
       const content = getRef(contentRefKey(topicKey));
