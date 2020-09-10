@@ -70,6 +70,7 @@ export class ViewPortViewer extends BaseWidget {
     const props = this.props;
     const { controller } = props;
     const zoomFactor = controller.run('getZoomFactor', props);
+    debugger
     controller.run('setZoomFactor', {
       ...props,
       zoomFactor: zoomFactor + 0.1

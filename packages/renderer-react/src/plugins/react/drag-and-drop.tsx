@@ -157,6 +157,10 @@ export function DragAndDropPlugin() {
           ...props,
           opType: OpType.DRAG_AND_DROP
         });
+        controller.run('operation', {
+          ...props,
+          opType: OpType.DRAG_AND_DROP_END
+        });
       }
     }
   };

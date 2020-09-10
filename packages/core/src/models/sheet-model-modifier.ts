@@ -388,7 +388,7 @@ function setTopicBlockData({
                              focusMode,
                              data
                            }: setTopicBlockDataArg): SheetModelModifierResult {
-  const topic = model.getTopic(topicKey);
+  let topic = model.getTopic(topicKey);
   if (topic) {
     const {index, block} = topic.getBlock(blockType);
     if (index === -1) {
@@ -417,6 +417,7 @@ function setTopicBlockData({
       model = result.model;
     }
   }
+  topic = model.getTopic(topicKey);
   return {
     model: model,
     topicKey:  topicKey,
@@ -665,11 +666,13 @@ function dragAndDrop({model, srcKey, dstKey, dropDir}):SheetModelModifierResult 
       });
     }
   }
+  const updateTopic = model.getTopic(srcKey);
   return {
     model: model,
     srcKey:  srcKey,
     dstKey:  dstKey,
     dropDir:dropDir,
+    topic:updateTopic
   };
 }
 

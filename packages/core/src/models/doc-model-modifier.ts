@@ -32,13 +32,14 @@ export function setCurrentSheetModel(
 
 export function toDocModelModifierFunc(sheetModelModifierFunc) {
   return arg => {
+
     const { docModel, ...rest } = arg;
      const result =  sheetModelModifierFunc({ ...rest, model: docModel.currentSheetModel });
      const model =   setCurrentSheetModel(
       docModel,
          result.model
     );
-    result.model = model;
+    result.docModel = model;
     return result;
   };
 }

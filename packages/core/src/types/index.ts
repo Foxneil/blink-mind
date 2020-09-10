@@ -1,4 +1,4 @@
-import { DocModel,Topic } from '../models';
+import {DocModel, SheetModel, Topic} from '../models';
 export type KeyType = string;
 
 export type KeyPath = KeyType[];
@@ -41,7 +41,8 @@ export const FocusMode = {
 export type ModelChangeCallback = () => void;
 
 export type ChangeEvent = {
-  model: DocModel;
+  model: SheetModel;
+  docModel:DocModel;
   topicKey?: KeyType;
   topicKeys?: Array<KeyType>;
   topic?: Topic;

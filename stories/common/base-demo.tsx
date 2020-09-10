@@ -18,9 +18,14 @@ export class BaseDemo extends React.Component<Props, State> {
   }
   onChange = (event, callback?: () => void) => {
     console.log("ChangeEvent",event);
+
+    // if(event.topicKey){
+    //   let topic = event.model.getTopic(event.topicKey);
+    //   debugger
+    // }
     this.setState(
       {
-        docModel:event.model
+        docModel:event.docModel
       },
       callback
     );

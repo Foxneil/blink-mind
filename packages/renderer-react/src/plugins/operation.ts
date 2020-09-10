@@ -163,7 +163,7 @@ export function OperationPlugin() {
           const opFuncProps = { controller, ...cur, docModel: acc };
           let res = controller.run('beforeOpFunction', opFuncProps);
           const opResult = opFunc({ ...opFuncProps, docModel: res });
-          res = opResult.model;
+          res = opResult.docModel;
           res = controller.run('afterOpFunction', {
             ...opFuncProps,
             docModel: res
@@ -175,12 +175,11 @@ export function OperationPlugin() {
         const opFunc = opMap.get(opType);
         newDocModel = controller.run('beforeOpFunction', ctx);
         const opResult = opFunc({ ...ctx, docModel: newDocModel });
-        newDocModel = opResult.model;
+        newDocModel = opResult.docModel;
         newDocModel = controller.run('afterOpFunction', {
           ...ctx,
           docModel: newDocModel
         });
-
         event = opResult;
       }
       event['opType'] = opType;
