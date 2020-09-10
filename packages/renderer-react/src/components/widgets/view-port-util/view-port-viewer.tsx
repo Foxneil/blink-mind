@@ -17,6 +17,7 @@ const ViewerRoot = styled(ZIndex)`
   border-radius: 2px;
   display: flex;
   flex-direction: row;
+  box-shadow: 0px 1px 2px 0px rgba(1, 3, 31, 0.15);
 `;
 
 const Item = props => {

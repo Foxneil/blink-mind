@@ -18,6 +18,7 @@ const EditorRootBreadcrumbsRoot = styled(ZIndex)`
   left: 20px;
   top: 20px;
   border-radius: 2px;
+  box-shadow: 0px 1px 2px 0px rgba(1, 3, 31, 0.15);
 `;
 
 const TooltipContent = styled.div`

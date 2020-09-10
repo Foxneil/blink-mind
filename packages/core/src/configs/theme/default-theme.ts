@@ -8,7 +8,7 @@ export const defaultTheme: ThemeType = {
   marginH: 80,
   marginV: 20,
   contentStyle: {
-    lineHeight: '1.2'
+    lineHeight: '1.0'
   },
   linkStyle: {
     lineRadius: 5,
@@ -37,8 +37,9 @@ export const defaultTheme: ThemeType = {
       borderColor: '#898A97',
       borderRadius: '4px',
       color: 'rgba(1, 3, 31, 0.85)',
-      fontSize: '18px',
-      padding: '5px'
+      fontSize: '16px',
+      padding: '5px',
+      fontWeight: '400'
     },
 
     subLinkStyle: {
@@ -57,8 +58,9 @@ export const defaultTheme: ThemeType = {
       borderColor: '#898A97',
       borderRadius: '4px',
       color: 'rgba(1, 3, 31, 0.85)',
-      fontSize: '18px',
-      padding: '5px'
+      fontSize: '16px',
+      padding: '5px',
+      fontWeight: '400'
     },
 
     subLinkStyle: {
