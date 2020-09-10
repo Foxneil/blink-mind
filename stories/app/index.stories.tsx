@@ -102,6 +102,7 @@ class AppDemo extends BaseDemo {
           onChange={this.onChange}
           plugins={plugins}
           ref={this.diagramRef}
+          moveDir={1}
         />
       </Container>
     );
