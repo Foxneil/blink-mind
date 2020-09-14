@@ -88,7 +88,12 @@ export function UndoPlugin() {
         redoStack: redoStack.push(docModel)
       });
       log('undo', newDocModel.currentSheetModel.topics);
-      controller.change(newDocModel);
+      const event = {
+        model: newDocModel.currentSheetModel,
+        docModel:newDocModel,
+        opType:OpType.UNDO
+      }
+      controller.change(event);
     },
 
     redo(ctx) {
@@ -108,7 +113,13 @@ export function UndoPlugin() {
         redoStack: redoStack.shift()
       });
       log('redo', newDocModel.currentSheetModel.topics);
-      controller.change(newDocModel);
+
+      const event = {
+        model: newDocModel.currentSheetModel,
+        docModel:newDocModel,
+        opType:OpType.REDO
+      }
+      controller.change(event);
     }
   };
 }

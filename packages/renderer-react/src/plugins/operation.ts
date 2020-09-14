@@ -183,6 +183,7 @@ export function OperationPlugin() {
         event = opResult;
       }
       event['opType'] = opType;
+      event['ctx'] = ctx;
       // log(
       //   'newDocModel:',
       //   newDocModel,

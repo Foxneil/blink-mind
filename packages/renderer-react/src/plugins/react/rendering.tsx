@@ -1,4 +1,4 @@
-import { BlockType, ViewModeMindMap } from '@stayfocus/core';
+import { BlockType, ViewModeMindMap, OpType } from '@stayfocus/core';
 import debug from 'debug';
 import React from 'react';
 import { SaveRef } from '../../components/common';
@@ -26,7 +26,7 @@ export function RenderingPlugin() {
       return diagramProps;
     },
     renderDiagram(props) {
-      const { docModel } = props;
+      const { docModel,controller } = props;
       return (
         <SaveRef>
           {(saveRef, getRef, deleteRef) => {

@@ -7,7 +7,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Theme from '../../plugins/react/theme';
 import { SheetTitle } from './sheet';
-
+let INIT_RENDER = true;
 const Root = styled.div`
   display: flex;
   flex-direction: column;
@@ -110,6 +110,18 @@ export function DiagramRoot(props) {
   //     </Tabs>
   //   </TabsContainer>
   // );
+  if(INIT_RENDER){
+    INIT_RENDER = false;
+    const event ={
+      ctx:props,
+      model:model,
+      docModel:docModel,
+      controller,
+      opType:OpType.INIT
+    }
+    
+    controller.change(event);
+  }
 
   return (
     <Root onCopy={onCopy}>

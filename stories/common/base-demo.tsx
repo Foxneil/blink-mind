@@ -23,6 +23,9 @@ export class BaseDemo extends React.Component<Props, State> {
     //   let topic = event.model.getTopic(event.topicKey);
     //   debugger
     // }
+    if(event.opType == 'INIT_RENDER'){
+        return;
+    }
     this.setState(
       {
         docModel:event.docModel

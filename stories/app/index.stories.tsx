@@ -1,15 +1,15 @@
 import { JsonSerializerPlugin } from '@stayfocus/plugin-json-serializer';
-import TopologyDiagramPlugin from '@stayfocus/plugin-topology-diagram';
+// import TopologyDiagramPlugin from '@stayfocus/plugin-topology-diagram';
 import {
-  // ExportFilePlugin,
-  // ExportTopicPlugin,
-  // InsertImagesPlugin,
-  // OpenFilePlugin,
-  // SearchPlugin,
+  ExportFilePlugin,
+  ExportTopicPlugin,
+  InsertImagesPlugin,
+  OpenFilePlugin,
+  SearchPlugin,
   SimpleCaptureErrorPlugin,
   TagsPlugin,
   ThemeSelectorPlugin,
-  // TopicReferencePlugin,
+  TopicReferencePlugin,
   UndoRedoPlugin
 } from '@stayfocus/plugins';
 import {
@@ -65,18 +65,18 @@ function ChangeThemePlugin() {
 }
 
 const plugins = [
-  // SimpleCaptureErrorPlugin(),
-  // ThemeSelectorPlugin(),
-  // TopicReferencePlugin(),
-  // SearchPlugin(),
-  // InsertImagesPlugin(),
-  // OpenFilePlugin(),
-  // ExportFilePlugin(),
-  // UndoRedoPlugin(),
-  // TagsPlugin(),
-  // ChangeThemePlugin(),
+  SimpleCaptureErrorPlugin(),
+  ThemeSelectorPlugin(),
+  TopicReferencePlugin(),
+  SearchPlugin(),
+  InsertImagesPlugin(),
+  OpenFilePlugin(),
+  ExportFilePlugin(),
+  UndoRedoPlugin(),
+  TagsPlugin(),
+  ChangeThemePlugin(),
   // TopologyDiagramPlugin(),
-  // ExportTopicPlugin(),
+  ExportTopicPlugin(),
   JsonSerializerPlugin()
 ];
 
