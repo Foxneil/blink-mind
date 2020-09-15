@@ -91,7 +91,7 @@ export class ViewPortViewer extends BaseWidget {
     const props = this.props;
     const { controller } = props;
     controller.run('addEventListener', {
-      ...props,
+      controller,
       key: EventKey.CENTER_ROOT_TOPIC,
       listener: this.centerRootTopic,
       once: true

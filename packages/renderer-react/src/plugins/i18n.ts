@@ -26,8 +26,8 @@ export function I18nPlugin() {
     [I18nKey.SHEET, 'Sheet'],
 
     [I18nKey.EDIT, '编辑'],
-    [I18nKey.ADD_CHILD, '添加下级节点'],
-    [I18nKey.ADD_SIBLING, '添加同级节点'],
+    [I18nKey.ADD_CHILD, '添加下级'],
+    [I18nKey.ADD_SIBLING, '添加同级'],
     [I18nKey.EDIT_NOTES, 'Edit Notes'],
     [I18nKey.REMOVE_NOTES, 'Remove Notes'],
     [I18nKey.CONVERT_TO_PLAIN_TEXT, 'Convert to Plain Text'],
