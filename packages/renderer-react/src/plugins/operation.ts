@@ -1,4 +1,5 @@
 import { DocModelModifier, OpType } from '@stayfocus/core';
+import { isReadOnlyModeEnabledOpt } from '../utils/readonly-util';
 import debug from 'debug';
 const log = debug('plugin:operation');
 
@@ -199,7 +200,7 @@ export function OperationPlugin() {
           undoStack: undoStack.push(docModel)
         });
       }
-      if(!(ctx.controller && ctx.controller.model.config&& ctx.controller.model.config.readOnly)){
+      if(!(ctx.controller && ctx.controller.model.config&& ctx.controller.model.config.readOnly && !isReadOnlyModeEnabledOpt(opType) )){
         controller.change(event, callback ? callback(newDocModel) : null);
       }
 

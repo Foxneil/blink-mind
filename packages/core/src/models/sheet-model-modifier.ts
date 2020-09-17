@@ -180,7 +180,7 @@ function focusTopic({
                       topicKey,
                       focusMode = FocusMode.NORMAL
                     }: SetFocusModeArg):SheetModelModifierResult {
-  if(model.config&& model.config.readOnly){
+  if(model.config && model.config.readOnly && focusMode != FocusMode.NORMAL){
     return {
       model: model,
       topicKey: null,

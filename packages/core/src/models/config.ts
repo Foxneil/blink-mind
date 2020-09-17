@@ -12,7 +12,7 @@ export type ConfigRecordType = {
 
 const defaultConfigRecord: ConfigRecordType = {
   viewMode: ViewModeMindMap,
-  readOnly: false,
+  readOnly: true,
   allowUndo: true,
   layoutDir: DiagramLayoutType.LEFT_TO_RIGHT,
   theme: defaultTheme
