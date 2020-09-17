@@ -199,7 +199,10 @@ export function OperationPlugin() {
           undoStack: undoStack.push(docModel)
         });
       }
-      controller.change(event, callback ? callback(newDocModel) : null);
+      if(!(ctx.controller && ctx.controller.model.config&& ctx.controller.model.config.readOnly)){
+        controller.change(event, callback ? callback(newDocModel) : null);
+      }
+
       controller.run('afterOperation', ctx);
 
       // log(controller.model);

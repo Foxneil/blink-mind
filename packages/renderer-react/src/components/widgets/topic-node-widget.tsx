@@ -100,6 +100,9 @@ export class TopicNodeWidget extends BaseWidget<Props, State> {
   };
   public renderContextMenu() {
     const { controller } = this.props;
+    if(controller.model && controller.model.config.readOnly){
+      return;
+    }
     if (
       !controller.getValue(PropKey.TOPIC_CONTEXT_MENU_ENABLED, {
         ...this.props

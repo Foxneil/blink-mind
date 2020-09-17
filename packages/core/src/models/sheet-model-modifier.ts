@@ -180,6 +180,14 @@ function focusTopic({
                       topicKey,
                       focusMode = FocusMode.NORMAL
                     }: SetFocusModeArg):SheetModelModifierResult {
+  if(model.config&& model.config.readOnly){
+    return {
+      model: model,
+      topicKey: null,
+      topicKeys:[],
+      topic: null,
+    };
+  }
   log('focus topic', focusMode);
   if (!model.topics.has(topicKey)) {
     throw new Error(`focus key ${topicKey} is not in model`);
