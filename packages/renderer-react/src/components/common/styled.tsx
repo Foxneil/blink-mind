@@ -51,10 +51,12 @@ export const Title = styled.div`
 `;
 
 export const TopicBlockIcon = styled.span`
-  margin: 0px 10px;
+  margin: 0px 6px;
   &:hover {
-    color: palevioletred;
+    color: #23D9B1;
+    cursor:pointer;
   }
+  ${props => props.isEditing?'color:#23D9B1;':''}
 `;
 
 export const ZIndex = styled.div`

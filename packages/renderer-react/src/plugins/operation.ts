@@ -72,7 +72,7 @@ export function OperationPlugin() {
     [OpType.SET_TOPIC_BLOCK_CONTENT, setTopicBlockContentData],
     [OpType.DELETE_TOPIC_BLOCK, deleteTopicBlock],
     [OpType.START_EDITING_CONTENT, startEditingContent],
-    [OpType.START_EDITING_DESC, startEditingDesc],
+    [OpType.DESC_OPEN, startEditingDesc],
     [OpType.DRAG_AND_DROP, dragAndDrop],
     [OpType.DRAG_AND_DROP_BEGIN, dragAndDropBegin],
     [OpType.DRAG_AND_DROP_END, dragAndDropEnd],

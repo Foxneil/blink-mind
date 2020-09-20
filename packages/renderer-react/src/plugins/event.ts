@@ -21,7 +21,7 @@ export function EventPlugin() {
       const { controller, model, topicKey } = props;
       log(model.zoomFactor);
       //TODO
-      if (model.editingDescKey !== null) return;
+      // if (model.editingDescKey !== null) return;
       if (model.editingContentKey === topicKey) return;
       if (
         model.focusKey === topicKey &&
@@ -32,7 +32,8 @@ export function EventPlugin() {
       controller.run('operation', {
         ...props,
         opType: OpType.FOCUS_TOPIC,
-        focusMode: FocusMode.NORMAL
+        focusMode: FocusMode.NORMAL,
+        editingDescKey:null,
       });
     },
 

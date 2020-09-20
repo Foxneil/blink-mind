@@ -18,6 +18,71 @@ import { HotKeysConfig } from '../types';
 import './diagram.scss';
 const log = debug('node:Diagram');
 
+
+const contentData = {
+  "sheetModels": [
+    {
+      "title": "画布1",
+      "rootTopicKey": "5f60aec8-a4f9-46e1-96c4-497e38ef0524",
+      "editorRootTopicKey": "5f60aec8-a4f9-46e1-96c4-497e38ef0524",
+      "focusKey": "06272534-84a3-4fcc-98d9-67faa5ee214e",
+      "topics": [
+        {
+          "key": "5f60aec8-a4f9-46e1-96c4-497e38ef0524",
+          "parentKey": null,
+          "subKeys": [
+            "06272534-84a3-4fcc-98d9-67faa5ee214e",
+            "a0c7d94e-4bc9-4fae-9fc7-f261a46675dc"
+          ],
+          "collapse": false,
+          "style": null,
+          "blocks": [
+            {
+              "type": "CONTENT",
+              "data": "鲍勃"
+            }
+          ]
+        },
+        {
+          "key": "06272534-84a3-4fcc-98d9-67faa5ee214e",
+          "parentKey": "5f60aec8-a4f9-46e1-96c4-497e38ef0524",
+          "subKeys": [],
+          "collapse": false,
+          "blocks": [
+            {
+              "type": "CONTENT",
+              "data": "我以"
+            },
+            {
+              "type": "DESC",
+              "data": {
+                "kind": "html",
+                "data": "<div>fdafgdfgfdgfds</div>",
+                "collapse": false
+              }
+            }
+          ]
+        },
+        {
+          "key": "a0c7d94e-4bc9-4fae-9fc7-f261a46675dc",
+          "parentKey": "5f60aec8-a4f9-46e1-96c4-497e38ef0524",
+          "subKeys": [],
+          "collapse": false,
+          "style": null,
+          "blocks": [
+            {
+              "type": "CONTENT",
+              "data": "问他"
+            }
+          ]
+        }
+      ],
+    }
+  ],
+  "extData": {},
+  "currentSheetIndex": 0,
+  "formatVersion": "0.1"
+};
 // controller 可以为空
 interface Props {
   docModel: DocModel | null | undefined;
@@ -100,9 +165,12 @@ class Diagram extends React.Component<Props> implements IDiagram {
     else this.resolveController(plugins, DefaultPlugin);
     let { docModel } = this.props;
     if (!docModel) {
-      docModel = this.controller.run('createNewDocModel', {
-        controller: this.controller
-      });
+      // docModel = this.controller.run('createNewDocModel', {
+      //   controller: this.controller
+      // });
+
+      docModel = this.controller.run('deserializeDocModel', { controller:this.controller, obj:contentData });
+      this.controller.docModel = docModel;
     }
     this.diagramProps = {
       ...this.props,

@@ -584,15 +584,15 @@ function startEditingContent({model, topicKey}: BaseSheetModelModifierArg) {
 function startEditingDesc({model, topicKey}: BaseSheetModelModifierArg) {
   const topic = model.getTopic(topicKey);
   const desc = topic.getBlock(BlockType.DESC);
-  if (desc.block == null || desc.block.data == null) {
-    const result = SheetModelModifier.setTopicBlockData({
-      model,
-      topicKey,
-      blockType: BlockType.DESC,
-      data: new DescBlockData({kind: 'html', data: '', collapse: false})
-    });
-    model = result.model;
-  }
+  // if (desc.block == null || desc.block.data == null) {
+  //   const result = SheetModelModifier.setTopicBlockData({
+  //     model,
+  //     topicKey,
+  //     blockType: BlockType.DESC,
+  //     data: new DescBlockData({kind: 'html', data: '', collapse: false})
+  //   });
+  //   model = result.model;
+  // }
   const result = SheetModelModifier.focusTopic({
     model,
     topicKey,

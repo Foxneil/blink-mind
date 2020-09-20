@@ -64,21 +64,21 @@ const items: TopicContextMenuItemConfig[] = [
   //   rootCanUse: true,
   //   opType: OpType.START_EDITING_DESC
   // },
+  // {
+  //   icon: 'trash',
+  //   enabledFunc: ({ topic }) => {
+  //     return topic.getBlock(BlockType.DESC).block != null;
+  //   },
+  //   // label: I18nKey.REMOVE_NOTES,
+  //   // shortcut: ['Alt', 'Shift', 'D'],
+  //   // rootCanUse: true,
+  //   // opType: OpType.DELETE_TOPIC_BLOCK,
+  //   // opArg: {
+  //   //   blockType: BlockType.DESC
+  //   // }
+  // },
   {
     icon: 'trash',
-    enabledFunc: ({ topic }) => {
-      return topic.getBlock(BlockType.DESC).block != null;
-    },
-    // label: I18nKey.REMOVE_NOTES,
-    // shortcut: ['Alt', 'Shift', 'D'],
-    // rootCanUse: true,
-    // opType: OpType.DELETE_TOPIC_BLOCK,
-    // opArg: {
-    //   blockType: BlockType.DESC
-    // }
-  },
-  {
-    icon: 'delete-node',
     label: I18nKey.DELETE,
     shortcut: ['Del'],
     opType: OpType.DELETE_TOPIC

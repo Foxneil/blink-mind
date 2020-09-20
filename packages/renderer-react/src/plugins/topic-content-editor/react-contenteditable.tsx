@@ -107,6 +107,7 @@ export default class ContentEditable extends React.Component<Props> {
   };
 
   onBlur = e => {
+    // if (this.props.handleOnBlur && this.props.handleOnBlur(e)) return;
     this.emitChange(e);
   };
 
@@ -206,4 +207,5 @@ export interface Props extends DivProps {
   handleKeyDown?: (e) => boolean;
   handleOnInput?: (e) => boolean;
   handleOnPaste?: (e) => void;
+  handleOnBlur?: (e) => boolean;
 }

@@ -9,7 +9,7 @@ export function getI18nText(ctx, key: string | string[]) {
     }
     return ctx.controller.run('getI18nText', {
       ...ctx,
-      key: key.toUpperCase()
+      key
     });
   } catch (e) {
     throw e;

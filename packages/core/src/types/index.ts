@@ -112,5 +112,7 @@ export const OpType = {
   SWAP_DOWN: 'SWAP_DOWN',
   UNDO: 'UNDO',
   REDO: 'REDO',
-  INIT: 'INIT_RENDER'
+  INIT: 'INIT_RENDER',
+  DESC_OPEN: 'DESC_OPEN',
+  DESC_CLOSE: 'DESC_CLOSE',
 };

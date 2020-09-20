@@ -79,12 +79,13 @@ export function RenderingPlugin() {
         ...nProps,
         zIndex: zIndex + 1
       });
-      const drawer = controller.run('renderDrawer', {
-        ...nProps,
-        zIndex: zIndex + 1
-      });
+      // const drawer = controller.run('renderDrawer', {
+      //   ...nProps,
+      //   zIndex: zIndex + 1
+      // });
       const viewportViewer = controller.run('renderViewPortViewer', nProps);
-      return [breadcrumbs, rightTopPanel, dialog, drawer, viewportViewer];
+      //return [breadcrumbs, rightTopPanel, dialog, drawer, viewportViewer];
+      return [breadcrumbs, rightTopPanel, dialog, viewportViewer];
     },
 
     renderEditorRootBreadcrumbs(props) {

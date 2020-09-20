@@ -70,7 +70,7 @@ export function TopicContentEditor(props: Props) {
         });
         setTimeout(() => {
           debounce = false;
-        }, 2000);
+        }, 1000);
       } else {
         controller.run('operation', {
           ...props,

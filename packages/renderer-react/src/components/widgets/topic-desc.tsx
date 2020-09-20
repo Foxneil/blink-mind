@@ -13,11 +13,12 @@ export function TopicDesc(props) {
     e.stopPropagation();
     controller.run('operation', {
       ...props,
-      opType: OpType.START_EDITING_DESC
+      opType: OpType.DESC_OPEN
     });
   };
   return (
     <TopicBlockIcon
+      isEditing={isEditing}
       onClick={onClick}
       className={iconClassName(IconName.NOTES)}
       tabIndex={-1}
