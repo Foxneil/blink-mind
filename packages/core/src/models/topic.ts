@@ -94,7 +94,11 @@ export class Topic extends Record(defaultTopicRecord) {
       data: content,
       key: null
     });
-    const blocks = List([block]);
+    const descBlock = Block.create({
+      type: BlockType.DESC,
+      data: content,
+    });
+    const blocks = List([block,descBlock]);
     return new Topic({
       key,
       parentKey,
