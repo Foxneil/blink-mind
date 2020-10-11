@@ -1,6 +1,6 @@
 import { DocModelModifier, OpType } from '@stayfocus/core';
-import { isReadOnlyModeEnabledOpt } from '../utils/readonly-util';
 import debug from 'debug';
+import { isReadOnlyModeEnabledOpt } from '../utils/readonly-util';
 const log = debug('plugin:operation');
 
 export function OperationPlugin() {

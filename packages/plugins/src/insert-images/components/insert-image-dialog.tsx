@@ -47,7 +47,7 @@ export function InsertImageDialog(props: BaseProps) {
             //@ts-ignore
             const image = new ImageRecord({
               key: md5(url),
-              url,
+              url: url+'',
               width: img.width,
               height: img.height
             });

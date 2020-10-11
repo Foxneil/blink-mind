@@ -1,4 +1,4 @@
-import { BlockType, ViewModeMindMap, OpType } from '@stayfocus/core';
+import { BlockType, OpType, ViewModeMindMap } from '@stayfocus/core';
 import debug from 'debug';
 import React from 'react';
 import { SaveRef } from '../../components/common';

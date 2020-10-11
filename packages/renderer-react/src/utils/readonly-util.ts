@@ -8,7 +8,7 @@ export const ReadOnlyModeEnabledOpt = [
     OpType.INIT
 ];
 export const  isReadOnlyModeEnabledOpt = (opType) => {
-    for(let type of ReadOnlyModeEnabledOpt){
+    for(const type of ReadOnlyModeEnabledOpt){
         if(opType == type){
             return true;
         }

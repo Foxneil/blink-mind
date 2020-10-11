@@ -15,19 +15,19 @@ function replaceCaret(el: HTMLElement) {
   // do not move caret if element was not focused
   // const isTargetFocused = document.activeElement === el;
   
-  if (target !== null && target.nodeValue !== null) {
-    const sel = window.getSelection();
-    if (sel !== null) {
-      const range = document.createRange();
-      //range.setStart(target, target.nodeValue.length);
-      range.selectNodeContents(el);
-      // range.collapse(true);
-      sel.removeAllRanges();
-      sel.addRange(range);
+  // if (target !== null && target.nodeValue !== null) {
+  //   const sel = window.getSelection();
+  //   if (sel !== null) {
+  //     const range = document.createRange();
+  //     //range.setStart(target, target.nodeValue.length);
+  //     range.selectNodeContents(el);
+  //     // range.collapse(true);
+  //     sel.removeAllRanges();
+  //     sel.addRange(range);
 
-    }
-   if (el instanceof HTMLElement) el.focus();
-  }
+  //   }
+  // }
+  if (el instanceof HTMLElement) el.focus();
 }
 
 /**
